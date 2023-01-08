@@ -1,0 +1,88 @@
+.main {
+    max-width: 800px;
+    width: 100%;
+
+    margin: auto;
+
+    font-family: var(--font-family);
+}
+
+.title {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+.col {
+    margin-top: 20px;
+}
+
+.error {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 5px;
+    color: var(--red-color);
+}
+
+.input {
+    height: 40px;
+    width: 100%;
+
+    font-weight: bold;
+    font-family: var(--font-family);
+    
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 10px;
+    background: var(--primary-bg-color);
+}
+
+.input::placeholder {
+    color: rgb(14, 14, 14);
+}
+
+.button-container {
+    margin: 20px 0;
+}
+
+.button-submit {
+    width: 200px;
+    height: 40px;
+
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 1.4rem;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color: var(--second-color);
+    background: var(--primary-color);
+}
+
+
+@media (min-width: 560px) {
+    .row {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .col {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .app {
+        padding: 20px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 70px auto;
+        gap: 20px;
+    }
+}

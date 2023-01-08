@@ -1,0 +1,61 @@
+.query-area {
+    width: 100%;
+}
+
+.query {
+    width: 100%;
+
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-query {
+    width: 40px;
+    height: 40px;
+
+    font-size: 22px;
+
+    border-radius: 10px;
+
+    text-align: center;
+    line-height: 40px;
+}
+
+.data-container {
+    flex: 1;
+}
+
+.patiente {
+    font-size: 1.6rem;
+}
+
+.query-data {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.query-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--gray-color);
+}
+
+.canceled {
+    color: var(--red-color);
+    background: var(--red-bg-color);
+}
+
+.confirm {
+    color: var(--green-color);
+    background: var(--green-bg-color);
+}
+
+.new {
+    color: var(--primary-color);
+    background: var(--primary-bg-color);
+}

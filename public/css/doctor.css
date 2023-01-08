@@ -1,0 +1,145 @@
+.main {
+    width: 100%;
+}
+
+.title {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+.table {
+    width: 100%;
+    font-size: 1.3rem;
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+    border-radius: 10px;
+
+    border: none;
+}
+
+.green {
+    color: var(--green-color);
+    background: var(--green-bg-color);
+}
+
+.red {
+    color: var(--red-color);
+    background: var(--red-bg-color);
+}
+
+
+.profile-view {
+    width: 100%;
+
+    overflow-y: auto;
+
+    transition: 400ms;
+
+    position: fixed;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+
+    padding: 20px;
+
+    background: var(--second-color);
+}
+
+.open {
+    left: 0;
+}
+
+.row {
+    width: 95%;
+    margin-bottom: 20px;
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+}
+
+.right {
+    justify-content: right;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--gray-color);
+}
+
+.value {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.desable-profile {
+    display: block;
+
+    width: 100px;
+    height: 35px;
+
+    font-family: var(--primary-font);
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    border-radius: 10px;
+
+    border: none;
+    background: var(--red-color);
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+
+    margin: 20px auto;
+
+    border-radius: 50px;
+    font-size: 40px;
+
+    line-height: 100px;
+    text-align: center;
+
+    color: var(--primary-color);
+    background: var(--primary-bg-color);
+}
+
+@media (min-width: 1024px) {
+    .main {
+        padding: 20px;
+    }
+
+    .app {
+        padding: 10px;
+    }
+
+    .table {
+        font-size: 1.6rem;
+    }
+
+    .profile-view {
+        position: relative;
+        left: 0;
+
+        border-radius: 10px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 70px auto 350px;
+    }
+}
