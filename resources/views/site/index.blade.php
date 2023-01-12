@@ -9,19 +9,19 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" />
 
-    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="./css/user.css" />
-    <link rel="stylesheet" type="text/css" href="./css/calendar.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/calendar.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}" />
 </head>
 <body>
 
     <div class="app">
-        <main>
+        <main class="container">
             <div class="large-calendar">
                 <div class="calendar-header">
                     <h3 id="calendar-title">loading...</h3>
 
-                    <div class="row">
+                    <div class="row-buttons">
                         <button aria-label="Botão para mudar para proximo mes" class="header-button" id="left">
                             <i class="fa-solid fa-arrow-left"></i>
                         </button>
@@ -54,13 +54,65 @@
             </div>
 
             <div class="form-container">
-                <form action="index.html" method="POST">
+                <h2 class="title">Dados</h2>
 
+                <form action="index.html" method="POST">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" placeholder="Nome de usuario" class="input" />
+                            <p class="error">Mensagem de erro</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <input type="email" placeholder="Email" class="input" />
+                            <p class="error">Mensagem de erro</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <select name="sexo" class="input">
+                                <option selected>Sexo</option>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                <option>Transgênero</option>
+                                <option>Gênero Neutro</option>
+                                <option>Não-binário</option>
+                                <option>Agênero</option>
+                            </select>
+                            <p class="error">O campo é obrigatório</p>
+                        </div>
+
+                        <div class="col">
+                            <select name="sexo" class="input">
+                                <option selected>Selecione o medico</option>
+                                <option>Dr. João</option>
+                                <option>Dr. Andrews</option>
+                                <option>Dr. Shaun Murphy</option>
+                            </select>
+                            <p class="error">O campo é obrigatório</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <textarea name="message" class="input textarea">Messagem adicional</textarea>
+                            <p class="error">O campo é obrigatório</p>
+                        </div>
+                    </div>
+
+                    <div class="align-button">
+                        <button type="submit" class="form-button">
+                            Cadastrar
+                        </button>
+                    </div>
                 </form>
             </div>
         </main>
     </div>
 
-    <script type="text/javascript" src="./script/large-calendar.js"></script>
+    <script type="text/javascript" src="{{ asset('script/large-calendar.js') }}"></script>
 </body>
 </html>

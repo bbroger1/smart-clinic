@@ -1,0 +1,106 @@
+.app {
+    padding: 40px 10px;
+    font-family: var(--font-family);
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}
+
+.col {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.error {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 5px;
+    color: var(--red-color);
+}
+
+.input {
+    height: 40px;
+    width: 100%;
+
+    font-weight: bold;
+    font-family: var(--font-family);
+    
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 10px;
+    background: var(--primary-bg-color);
+}
+
+.input::placeholder {
+    color: rgb(14, 14, 14);
+}
+
+.textarea {
+    height: 200px;
+    padding: 10px;
+    resize: none;
+}
+
+.align-button {
+    display: flex;
+    justify-content: right;
+
+    margin-top: 30px;
+}
+
+.form-button {
+    width: 200px;
+    height: 30px;
+
+    font-family: var(--font-family);
+    font-size: 14px;
+    border-radius: 10px;
+
+    border: none;
+
+    box-shadow: 0 0 20px var(--primary-color-shadow);
+
+    cursor: pointer;
+
+    color: var(--second-color);
+    background: var(--primary-color);
+}
+
+@media (min-width: 700px) {
+    .container {
+        display: flex;
+        gap: 20px;
+    }
+
+    .large-calendar,
+    .form-container {
+        flex: 1;
+        margin: 0;
+    }
+
+    .calendar-header {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 460px) {
+    .row {
+        gap: 20px;
+        flex-direction: row;
+    }
+}
