@@ -15,4 +15,12 @@ Route::prefix('app')->group(function () {
     Route::get('/agenda', function () {
         return view('app.agenda');
     })->name('app.agenda');
+
+    Route::get('/doctors/{view?}', function() {
+        return view('app.doctors');
+    })->name('app.doctors');
+
+    Route::get('/login', function () {
+        return view('app.login');
+    });
 });
