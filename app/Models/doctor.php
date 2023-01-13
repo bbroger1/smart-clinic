@@ -9,5 +9,5 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'lastName', 'phoneNumber', 'cpf', 'sexo', 'state', 'uf', 'area'];
+    protected $fillable = ['name', 'lastName', 'phoneNumber', 'cpf', 'sexo', 'city', 'uf', 'area'];
 }
