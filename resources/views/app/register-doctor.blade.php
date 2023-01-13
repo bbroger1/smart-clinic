@@ -13,7 +13,7 @@
         <i class="fa-solid fa-bars"></i>
     </button>
 
-    @include ('app.layout.partials.manu')
+    @include ('app.layout.partials.menu')
 
     <main class="main">
         <h2 class="title">Cadastrar medico</h2>
