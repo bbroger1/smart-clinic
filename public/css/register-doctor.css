@@ -23,6 +23,25 @@
     color: var(--red-color);
 }
 
+.message {
+    width: 100%;
+
+    margin-top: 10px;
+    padding: 10px;
+    
+    border-radius: 5px;
+
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+    background: var(--red-bg-color);
+}
+
+.message.success {
+    border: 1px solid var(--green-color);
+    color: var(--green-color);
+    background: var(--green-bg-color);
+}
+
 .input {
     height: 40px;
     width: 100%;

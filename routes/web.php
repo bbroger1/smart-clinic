@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DoctorController;
 
 Route::get('/', function () {
     return view('site.index');
@@ -24,7 +25,6 @@ Route::prefix('app')->group(function () {
         return view('app.login');
     })->name('app.login');
 
-    Route::get('/register-doctor', function () {
-        return view('app.register-doctor');
-    })->name('app.register-doctor');
+    Route::get('/register-doctor/{op?}', [DoctorController::class, 'index'])->name('app.register-doctor');
+    Route::post('/register-doctor', [DoctorController::class, 'create'])->name('app.register-doctor');
 });
