@@ -7,30 +7,38 @@
 
     <ul class="list">
         <li class="menu-item">
-            <a href="index.html" class="menu-item-link activate">
-                <i class="fa-solid fa-house"></i>
-                <p class="hidden">Home</p>
+            <a 
+                href="{{ route('app.home') }}" 
+                class="menu-item-link {{ !strcmp(Route::current()->getName(), 'app.home') ? 'activate' : ''  }}">
+                    <i class="fa-solid fa-house"></i>
+                    <p class="hidden">Home</p>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="agenda.html" class="menu-item-link">
-                <i class="fa-solid fa-clipboard"></i>
-                <p class="hidden">Agenda</p>
+            <a 
+                href="{{ route('app.agenda') }}" 
+                class="menu-item-link {{ !strcmp(Route::current()->getName(), 'app.agenda') ? 'activate' : ''  }}">
+                    <i class="fa-solid fa-clipboard"></i>
+                    <p class="hidden">Agenda</p>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="register-doctor.html" class="menu-item-link">
-                <i class="fa-solid fa-user-nurse"></i>
-                <p class="hidden">Cadastrar medico</p>
+            <a 
+                href="{{ route('app.register-doctor') }}" 
+                class="menu-item-link {{ !strcmp(Route::current()->getName(), 'app.register-doctor') ? 'activate' : ''  }}">
+                    <i class="fa-solid fa-user-nurse"></i>
+                    <p class="hidden">Cadastrar medico</p>
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="doctors.html" class="menu-item-link">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p class="hidden">Medicos</p>
+            <a 
+                href="{{ route('app.doctors') }}" 
+                class="menu-item-link {{ !strcmp(Route::current()->getName(), 'app.doctors') ? 'activate' : ''  }}">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p class="hidden">Medicos</p>
             </a>
         </li>
     </ul>

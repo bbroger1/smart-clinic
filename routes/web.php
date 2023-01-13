@@ -26,5 +26,5 @@ Route::prefix('app')->group(function () {
 
     Route::get('/register-doctor', function () {
         return view('app.register-doctor');
-    });
+    })->name('app.register-doctor');
 });
