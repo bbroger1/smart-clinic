@@ -16,12 +16,13 @@ class CreateDoctorsTable extends Migration
 
             $table->string('phoneNumber', 15);
             $table->string('cpf', 14);
-            $table->string('sexo', 15); // change to fk
 
             $table->string('state', 20);
             $table->char('uf', 2);
 
             $table->string('area', 25);
+
+            $table->foreignId('genre')->references('id')->on('genres');
 
             $table->timestamps();
         });

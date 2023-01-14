@@ -33,7 +33,7 @@ class DoctorController extends Controller
             'lastName'    => 'required|max:20',
             'phoneNumber' => 'required|regex:/\(\d{2}\) \d{5}-\d{4}/',
             'cpf'         => 'required|regex:/(\d{3}\.){2}\d{3}-\d{2}/',
-            'sexo'        => 'required',
+            'genre'       => 'required',
             'city'        => 'required',
             'uf'          => 'required|max:2',
             'area'        => 'required'

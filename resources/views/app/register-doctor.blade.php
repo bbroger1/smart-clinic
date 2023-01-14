@@ -73,18 +73,18 @@
 
             <div class="row">
                 <div class="col">
-                    <select name="sexo" class="input" value="{{ old('sexo') }}">
+                    <select name="genre" class="input" value="{{ old('genre') }}">
                         <option selected value="">Sexo</option>
 
                         @foreach ($genres as $obj)
                         <option 
                             value="{{ $obj->id }}" 
-                            {{ old('sexo') == $obj->id ? 'selected' : '' }}>
+                            {{ old('genre') == $obj->id ? 'selected' : '' }}>
                                 {{ $obj->genre }}
                             </option>
                         @endforeach
                     </select>
-                    <p class="error">{{ $errors->has('sexo') ? $errors->first() : '' }}</p>
+                    <p class="error">{{ $errors->has('genre') ? $errors->first() : '' }}</p>
                 </div>
 
                 <div class="col">
