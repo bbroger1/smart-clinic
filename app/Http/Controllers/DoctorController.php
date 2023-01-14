@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -19,7 +20,9 @@ class DoctorController extends Controller
         else
             $message = 'Erro ao cadastrar os dados do medico.';
 
-        return view('app.register-doctor', compact(['op', 'message']));
+
+        $genres = Genre::all();
+        return view('app.register-doctor', compact(['op', 'message', 'genres']));
     }
 
 

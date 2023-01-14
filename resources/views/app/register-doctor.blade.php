@@ -74,20 +74,22 @@
             <div class="row">
                 <div class="col">
                     <select name="sexo" class="input" value="{{ old('sexo') }}">
-                        <option selected>Sexo</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Transgênero">Transgênero</option>
-                        <option value="Gênero Neutro">Gênero Neutro</option>
-                        <option value="Não-binário">Não-binário</option>
-                        <option value="Agênero">Agênero</option>
+                        <option selected value="">Sexo</option>
+
+                        @foreach ($genres as $obj)
+                        <option 
+                            value="{{ $obj->id }}" 
+                            {{ old('sexo') == $obj->id ? 'selected' : '' }}>
+                                {{ $obj->genre }}
+                            </option>
+                        @endforeach
                     </select>
                     <p class="error">{{ $errors->has('sexo') ? $errors->first() : '' }}</p>
                 </div>
 
                 <div class="col">
                     <select name="uf" class="input" id="ufs" value="{{ old('uf') }}">
-                        <option selected>Estado</option>
+                        <option selected value="">Estado</option>
                     </select>
                     <p class="error">{{ $errors->has('uf') ? $errors->first() : '' }}</p>
                 </div>
@@ -96,14 +98,14 @@
             <div class="row">
                 <div class="col">
                     <select name="city" class="input" id="city" value="{{ old('city') }}">
-                        <option selected>Cidade</option>
+                        <option selected value="">Cidade</option>
                     </select>
                     <p class="error">{{ $errors->has('city') ? $errors->first() : '' }}</p>
                 </div>
 
                 <div class="col">
                     <select name="area" class="input" value="{{ old('area') }}">
-                        <option selected>Area de atuação</option>
+                        <option selected value="">Area de atuação</option>
                         <option>Cardiologia</option>
                         <option>Dermatologia</option>
                         <option>Endocrinologia e metabologia</option>
