@@ -15,7 +15,7 @@ class AlterDoctorTableAddFk extends Migration
     {
         Schema::table('doctors', function (Blueprint $table) {
             $table->dropColumn('sexo');
-            $table->foreignId('sexo')->references('id')->on('genres');
+            $table->foreignId('sexo_fk')->nullable()->references('id')->on('genres');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterDoctorTableAddFk extends Migration
      */
     public function down()
     {
-        $table->dropColumn('sexo');
+        $table->dropColumn('sexo_fk');
         $table->string('sexo', 15);
     }
 }
