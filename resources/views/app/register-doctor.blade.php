@@ -107,14 +107,6 @@
                     <select name="area" class="input" value="{{ old('area') }}">
                         <option selected value="">Area de atuação</option>
                         <option>Cardiologia</option>
-                        <option>Dermatologia</option>
-                        <option>Endocrinologia e metabologia</option>
-                        <option>Geriatria</option>
-                        <option>Nefrologia</option>
-                        <option>Neurologia</option>
-                        <option>Oftalmologia</option>
-                        <option>Ortopedia e traumatologia</option>
-                        <option>Psiquiatria</option>
                     </select>
                     <p class="error">{{ $errors->has('area') ? $errors->first() : '' }}</p>
                 </div>
