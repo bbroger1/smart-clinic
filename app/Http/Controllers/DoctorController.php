@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Genre;
+use App\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -22,7 +23,8 @@ class DoctorController extends Controller
 
 
         $genres = Genre::all();
-        return view('app.register-doctor', compact(['op', 'message', 'genres']));
+        $areas = Area::all();
+        return view('app.register-doctor', compact(['op', 'message', 'genres', 'areas']));
     }
 
 

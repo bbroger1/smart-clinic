@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col">
                     <select name="genre" class="input" value="{{ old('genre') }}">
-                        <option selected value="">Sexo</option>
+                        <option value="">Sexo</option>
 
                         @foreach ($genres as $obj)
                         <option 
@@ -105,8 +105,15 @@
 
                 <div class="col">
                     <select name="area" class="input" value="{{ old('area') }}">
-                        <option selected value="">Area de atuação</option>
-                        <option>Cardiologia</option>
+                        <option value="">Area de atuação</option>
+
+                        @foreach($areas as $obj)
+                        <option 
+                            value="{{ $obj->id }}"
+                            {{ old('area') == $obj->id ? 'selected' : '' }}>
+                                {{ $obj->area }}
+                        </option>
+                        @endforeach
                     </select>
                     <p class="error">{{ $errors->has('area') ? $errors->first() : '' }}</p>
                 </div>
