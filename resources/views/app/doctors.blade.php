@@ -18,35 +18,15 @@
         <h2 class="title">Medicos cadastrados</h2>
 
         <div>
-            @component('app.layout.components.doctor-table', [
-                'doctors' => [
-                    0 => [
-                        'id' => 1,
-                        'name' => 'Edmar Sousa',
-                        'phoneNumber' => '(00) 00000-0000'
-                    ],
-                    1 => [
-                        'id' => 2,
-                        'name' => 'Edinho',
-                        'phoneNumber' => '(88) 88888-9000'
-                    ]
-                ]
-            ])
+            @component('app.layout.components.doctor-table', ['doctors' => $doctors])
             @endcomponent
         </div>
     </main>
 
-    @component('app.layout.components.doctor-information', [
-        'id' => 1,
-        'name' => 'Edmar Sousa',
-        'status' => 'Ativo',
-        'phoneNumber' => '(00) 00000-0000',
-        'sexo' => 'Masculino',
-        'city' => 'Ocara',
-        'uf' => 'CE',
-        'area' => 'neurocirurgião'
-    ])
-    @endcomponent
+    @if ($view && $view > 0)
+        @component('app.layout.components.doctor-information', ['doctor' => $doctors[$view - 1]])
+        @endcomponent
+    @endif
 </div>
 
 <script type="text/javascript" src="{{ asset('script/menu.js') }}"></script>

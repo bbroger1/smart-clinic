@@ -8,8 +8,23 @@ use App\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
+use Illuminate\Support\Facades\DB;
+
 class DoctorController extends Controller
 {
+    public function all(Request $request)
+    {
+        $doctors = DB::table('doctors')
+            ->join('areas', 'doctors.area', '=', 'areas.id')
+            ->join('genres', 'doctors.genre', '=', 'genres.id')
+            ->select('doctors.*', 'areas.area', 'genres.genre')
+            ->get();
+
+        $view = $request->get('view');
+        
+        return view('app.doctors', compact(['doctors', 'view']));
+    }
+
     public function index(Request $request)
     {
         $op = $request->get('op');

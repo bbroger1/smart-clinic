@@ -18,13 +18,13 @@
         <div class="row">
             <div class="col">
                 <p class="label">Nome:</p>
-                <p class="value">{{ $name }}</p>
+                <p class="value">{{ $doctor->name }}</p>
             </div>
 
             <div class="col">
                 <p class="label">Status:</p>
                 <p class="value">
-                    <i class="fa-regular fa-circle-check"></i> {{ $status }}
+                    <i class="fa-regular fa-circle-check"></i> Ativo {{-- $doctor->status --}}
                 </p>
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col">
                 <p class="label">Telefone:</p>
-                <p class="value">{{ $phoneNumber }}</p>
+                <p class="value">{{ $doctor->phoneNumber }}</p>
             </div>
 
             <div class="col"></div>
@@ -41,21 +41,21 @@
         <div class="row">
             <div class="col">
                 <p class="label">Sexo:</p>
-                <p class="value">{{ $sexo }}</p>
+                <p class="value">{{ $doctor->genre }}</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <p class="label">Cidade/Estado:</p>
-                <p class="value">{{ $city }} - {{ $uf }}</p>
+                <p class="value">{{ $doctor->city }} - {{ $doctor->uf }}</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <p class="label">Área de atuação:</p>
-                <p class="value">{{ $area }}</p>
+                <p class="value">{{ $doctor->area }}</p>
             </div>
         </div>
 
