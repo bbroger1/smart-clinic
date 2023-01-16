@@ -118,6 +118,29 @@
     background: var(--primary-bg-color);
 }
 
+.buttons {
+    height: 30px;
+
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.change-page {
+    height: 100%;
+    padding: 0 30px;
+
+    font-family: var(--primary-font);
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border-radius: 10px;
+    border: none;
+    background: var(--primary-bg-color);
+}
+
 @media (min-width: 1024px) {
     .main {
         padding: 20px;

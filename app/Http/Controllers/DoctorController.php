@@ -14,17 +14,22 @@ class DoctorController extends Controller
 {
     public function all(Request $request)
     {
+        $page = $request->get('page') ? $request->get('page') - 1 : 0;
+
         $doctors = DB::table('doctors')
             ->join('areas', 'doctors.area', '=', 'areas.id')
             ->join('genres', 'doctors.genre', '=', 'genres.id')
             ->select('doctors.*', 'areas.area', 'genres.genre')
+            ->skip(12 * $page)
+            ->take(12)
             ->get();
 
-        $view = $request->get('view');
+        $view = ($request->get('view') - 1) % 12;
         
         return view('app.doctors', compact(['doctors', 'view']));
     }
 
+    
     public function index(Request $request)
     {
         $op = $request->get('op');

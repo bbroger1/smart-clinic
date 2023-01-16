@@ -21,10 +21,22 @@
             @component('app.layout.components.doctor-table', ['doctors' => $doctors])
             @endcomponent
         </div>
+
+        <div class="buttons">
+            <div>
+                <button class="change-page" id="old-page">Anterior</button>
+            </div>
+
+            <p class="page-count">1</p>
+
+            <div>
+                <button class="change-page" id="next-page">Proxima</button>
+            </div>
+        </div>
     </main>
 
-    @if ($view && $view > 0)
-        @component('app.layout.components.doctor-information', ['doctor' => $doctors[$view - 1]])
+    @if ($view != -1)
+        @component('app.layout.components.doctor-information', ['doctor' => $doctors[$view]])
         @endcomponent
     @endif
 </div>
