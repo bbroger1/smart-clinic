@@ -26,52 +26,48 @@
 
             <div class="row">
                 <div class="col">
-                    <input 
-                        type="text" 
-                        placeholder="Nome" 
-                        name="name" 
-                        class="input"
-                        value="{{ old('name') }}" />
-                    <p class="error">{{ $errors->has('name') ? $errors->first() : '' }}</p>
+                    @component('app.layout.components.register-doctor-input', [
+                        'type' => 'text',
+                        'placeholder' => 'Nome',
+                        'name' => 'name'
+                    ])
+                    @endcomponent
                 </div>
 
                 <div class="col">
-                    <input 
-                        type="text" 
-                        placeholder="Sobrenome" 
-                        name="lastName" 
-                        class="input"
-                        value="{{ old('lastName') }}" />
-                    <p class="error">{{ $errors->has('lastName') ? $errors->first() : '' }}</p>
+                    @component('app.layout.components.register-doctor-input', [
+                        'type' => 'text',
+                        'placeholder' => 'Sobrenome',
+                        'name' => 'lastName'
+                    ])
+                    @endcomponent
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <input 
-                        type="text" 
-                        placeholder="(00) 00000-0000" 
-                        name="phoneNumber" 
-                        class="input"
-                        value="{{ old('phoneNumber') }}" />
-                    <p class="error">{{ $errors->has('phoneNumber') ? $errors->first() : '' }}</p>
+                    @component('app.layout.components.register-doctor-input', [
+                        'type' => 'text',
+                        'placeholder' => '(00) 00000-0000',
+                        'name' => 'phoneNumber'
+                    ])
+                    @endcomponent
                 </div>
 
                 <div class="col">
-                    <input 
-                        type="text" 
-                        placeholder="000.000.000-00" 
-                        name="cpf" 
-                        class="input"
-                        value="{{ old('cpf') }}" />
-                    <p class="error">{{ $errors->has('cpf') ? $errors->first() : '' }}</p>
+                    @component('app.layout.components.register-doctor-input', [
+                        'type' => 'text',
+                        'placeholder' => '000.000.000-00',
+                        'name' => 'cpf'
+                    ])
+                    @endcomponent
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
                     <select name="genre" class="input" value="{{ old('genre') }}">
-                        <option value="">Sexo</option>
+                        <option value="">Genero</option>
 
                         @foreach ($genres as $obj)
                         <option 
@@ -81,14 +77,20 @@
                             </option>
                         @endforeach
                     </select>
-                    <p class="error">{{ $errors->has('genre') ? $errors->first() : '' }}</p>
+
+                    @error ('genre')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="col">
                     <select name="uf" class="input" id="ufs" value="{{ old('uf') }}">
                         <option selected value="">Estado</option>
                     </select>
-                    <p class="error">{{ $errors->has('uf') ? $errors->first() : '' }}</p>
+
+                    @error ('uf')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -97,7 +99,10 @@
                     <select name="city" class="input" id="city" value="{{ old('city') }}">
                         <option selected value="">Cidade</option>
                     </select>
-                    <p class="error">{{ $errors->has('city') ? $errors->first() : '' }}</p>
+
+                    @error ('city')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="col">
@@ -112,7 +117,10 @@
                         </option>
                         @endforeach
                     </select>
-                    <p class="error">{{ $errors->has('area') ? $errors->first() : '' }}</p>
+
+                    @error ('area')
+                        <p class="error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 

@@ -10,6 +10,8 @@ use Illuminate\Database\QueryException;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Requests\StoreDoctor;
+
 class DoctorController extends Controller
 {
     public function all(Request $request)
@@ -24,7 +26,7 @@ class DoctorController extends Controller
             ->take(12)
             ->get();
 
-        $view = ($request->get('view') - 1) % 12;
+        $view = $request->get('view');
         return view('app.doctors', compact(['doctors', 'view']));
     }
 
@@ -47,37 +49,10 @@ class DoctorController extends Controller
     }
 
 
-    public function create(Request $request) 
-    {
-        $validate = [
-            'name'        => 'required|max:20',
-            'lastName'    => 'required|max:20',
-            'phoneNumber' => 'required|regex:/\(\d{2}\) \d{5}-\d{4}/',
-            'cpf'         => 'required|regex:/(\d{3}\.){2}\d{3}-\d{2}/',
-            'genre'       => 'required',
-            'city'        => 'required',
-            'uf'          => 'required|max:2',
-            'area'        => 'required'
-        ];
-
-        $feedbacks = [
-            'required' => 'O campo :attribute é obrigatório.',
-
-            'name.max' => 'O campo nome deve ter no máximo 20 caracteres.',
-            'lastName.max' => 'O campo sobrenome deve ter no máximo 20 caracteres.',
-            'uf.max' => 'O campo estado deve ter no máximo 2 caracteres.',
-            'phoneNumber.regex' => 'O campo telefone não corresponde ao padrão (00) 00000-0000.',
-            'cpf.regex' => 'O campo cpf deve corresponder ao padrão 000.000.000-00.'
-        ];
-
-        $request->validate($validate, $feedbacks);
-        
-        try {
-            $user = Doctor::create($request->all());
-            return redirect()->route('app.register-doctor', ['op' => 'success']);
-        } catch (QueryException $err) {
-            return redirect()->route('app.register-doctor', ['op' => 'error']);
-        }
+    public function create(StoreDoctor $request) 
+    {   
+        $user = Doctor::create($request->validated());
+        return redirect()->route('app.register-doctor', ['op' => 'success']);
     }
 
 

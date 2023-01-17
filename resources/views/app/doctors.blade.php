@@ -38,8 +38,8 @@
         </div>
     </main>
 
-    @if ($view != -1)
-        @component('app.layout.components.doctor-information', ['doctor' => $doctors[$view]])
+    @if ($view > 0)
+        @component('app.layout.components.doctor-information', ['doctor' => $doctors[ ($view - 1) % 12 ]])
         @endcomponent
     @endif
 </div>
