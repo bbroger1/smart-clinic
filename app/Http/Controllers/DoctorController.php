@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Genre;
 use App\Models\Area;
+
 use App\Http\Requests\StoreDoctor;
+use App\Http\Requests\DoctorParams;
 
 class DoctorController extends Controller
 {
@@ -19,8 +21,8 @@ class DoctorController extends Controller
     function __construct(Doctor $doctor, Genre $genre, Area $area)
     {
         $this->doctor = $doctor;
-        $this->genre = $genre;
-        $this->area = $area;
+        $this->genre  = $genre;
+        $this->area   = $area;
     }
 
 
