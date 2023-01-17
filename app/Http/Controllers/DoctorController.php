@@ -25,7 +25,6 @@ class DoctorController extends Controller
             ->get();
 
         $view = ($request->get('view') - 1) % 12;
-        
         return view('app.doctors', compact(['doctors', 'view']));
     }
 
@@ -79,5 +78,20 @@ class DoctorController extends Controller
         } catch (QueryException $err) {
             return redirect()->route('app.register-doctor', ['op' => 'error']);
         }
+    }
+
+
+    public function delete(Request $request)
+    {
+        $id = $request->get('id');
+        Doctor::find($id)->delete();
+        return redirect()->route('app.doctors');
+    }
+
+    public function reactivate(Request $request)
+    {
+        $id = $request->get('id');
+        Doctor::where('id', $id)->restore();
+        return redirect()->route('app.doctors');
     }
 }

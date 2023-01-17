@@ -18,11 +18,8 @@
     <main class="main">
         <h2 class="title">Cadastrar medico</h2>
 
-        @if (!strcmp($op, 'success'))
-        <p class="message success">{{ $message }}</p>
-        @elseif(!strcmp($op, 'error'))
-        <p class="message error">{{ $message }}</p>
-        @endif
+        @component('app.layout.components.message', ['op' => $op, 'message' => $message])
+        @endcomponent
 
         <form action="{{ route('app.register-doctor') }}" method="POST">
             @csrf

@@ -118,6 +118,12 @@
     background: var(--primary-bg-color);
 }
 
+.actions-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
 .buttons {
     height: 30px;
 

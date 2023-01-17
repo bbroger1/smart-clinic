@@ -17,6 +17,9 @@
     <main class="main">
         <h2 class="title">Medicos cadastrados</h2>
 
+        {{-- @component('app.layout.components.message', ['op' => $op, 'message' => $message])
+        @endcomponent --}}
+
         <div>
             @component('app.layout.components.doctor-table', ['doctors' => $doctors])
             @endcomponent
