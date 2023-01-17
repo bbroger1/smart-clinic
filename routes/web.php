@@ -22,9 +22,13 @@ Route::prefix('app')->group(function () {
         return view('app.login');
     })->name('app.login');
     
-    Route::get('/doctors', [DoctorController::class, 'all'])->name('app.doctors');
-    Route::get('/register-doctor/{op?}', [DoctorController::class, 'index'])->name('app.register-doctor');
-    Route::post('/register-doctor', [DoctorController::class, 'create'])->name('app.register-doctor');
-    Route::delete('/doctors', [DoctorController::class, 'delete'])->name('app.delete-doctor');
-    Route::put('/doctors', [DoctorController::class, 'reactivate'])->name('app.active-doctor');
+
+    Route::prefix('/doctors')->group(function () {
+        Route::get('/', [DoctorController::class, 'all'])->name('app.doctors');
+        Route::get('/register', [DoctorController::class, 'index'])->name('app.register-doctor');
+        Route::post('/register', [DoctorController::class, 'create'])->name('app.register-doctor');
+        Route::delete('/delete', [DoctorController::class, 'delete'])->name('app.delete-doctor');
+        Route::put('/update', [DoctorController::class, 'reactivate'])->name('app.active-doctor');
+    });
+
 });
