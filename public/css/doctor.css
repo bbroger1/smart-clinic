@@ -92,6 +92,7 @@
     width: 100px;
     height: 35px;
 
+    color: #000;
     font-family: var(--primary-font);
     font-size: 1.4rem;
     font-weight: bold;
@@ -99,7 +100,14 @@
     border-radius: 10px;
 
     border: none;
+}
+
+.desable-profile.red {
     background: var(--red-color);
+}
+
+.desable-profile.green {
+    background: var(--green-color);
 }
 
 .icon {
@@ -122,6 +130,10 @@
     display: flex;
     justify-content: center;
     gap: 3px;
+}
+
+.desabled {
+    color: var(--red-color);
 }
 
 .buttons {

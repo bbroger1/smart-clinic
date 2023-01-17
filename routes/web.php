@@ -22,7 +22,7 @@ Route::prefix('app')->group(function () {
         return view('app.login');
     })->name('app.login');
     
-    Route::get('/doctors/{view?}/{page?}/{op?}', [DoctorController::class, 'all'])->name('app.doctors');
+    Route::get('/doctors', [DoctorController::class, 'all'])->name('app.doctors');
     Route::get('/register-doctor/{op?}', [DoctorController::class, 'index'])->name('app.register-doctor');
     Route::post('/register-doctor', [DoctorController::class, 'create'])->name('app.register-doctor');
     Route::delete('/doctors', [DoctorController::class, 'delete'])->name('app.delete-doctor');

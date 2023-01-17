@@ -27,7 +27,7 @@
                         action="{{ route($doctor->deleted_at ? 'app.delete-doctor' : 'app.active-doctor') }}" 
                         method="POST">
                             @csrf
-                            @method($doctor->deleted_at ? 'PUT' : 'delete')
+                            @method($doctor->deleted_at ? 'put' : 'delete')
                             
                             <input type="hidden" value="{{ $doctor->id }}" name="id" />
         

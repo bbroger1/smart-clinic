@@ -23,9 +23,15 @@
 
             <div class="col">
                 <p class="label">Status:</p>
+                @if (!$doctor->deleted_at)
                 <p class="value">
-                    <i class="fa-regular fa-circle-check"></i> Ativo {{-- $doctor->status --}}
+                    <i class="fa-regular fa-circle-check"></i> Ativo
                 </p>
+                @else
+                <p class="value desabled">
+                    <i class="fa-solid fa-lock"></i> Desativado
+                </p>
+                @endif
             </div>
         </div>
 
@@ -60,9 +66,18 @@
         </div>
 
         <div class="row right">
-            <button class="desable-profile" aria-label="Botão para desativar perfil">
-                <i class="fa-solid fa-lock"></i> Desativar
-            </button>
+            <form action="{{ route($doctor->deleted_at ? 'app.delete-doctor' : 'app.active-doctor') }}" method="POST">
+                @csrf
+                @method($doctor->deleted_at ? 'put' : 'delete')
+
+                <input type="hidden" name="id" value="{{ $doctor->id }}">
+
+                <button 
+                    class="desable-profile {{ $doctor->deleted_at ? 'green' : 'red' }}" 
+                    aria-label="Botão para {{$doctor->deleted_at ? 'ativar' : 'desativar' }} perfil">
+                        <i class="fa-solid fa-lock{{ $doctor->deleted_at ? '-open' : '' }}"></i> {{$doctor->deleted_at ? 'ativar' : 'desativar' }}
+                </button>
+            </form>
         </div>
     </div>
 </aside>
