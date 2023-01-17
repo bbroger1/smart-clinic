@@ -10,4 +10,10 @@ class Area extends Model
     use HasFactory;
 
     protected $fillable = ['area'];
+
+
+    public function getAllAreas()
+    {
+        return $this->all();
+    }
 }

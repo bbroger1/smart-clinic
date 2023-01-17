@@ -2,71 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Models\Doctor;
 use App\Models\Genre;
 use App\Models\Area;
-use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
-
-use Illuminate\Support\Facades\DB;
-
 use App\Http\Requests\StoreDoctor;
 
 class DoctorController extends Controller
 {
+    protected Doctor $doctor;
+    protected Genre $genre;
+    protected Area $area;
+
+
+    function __construct(Doctor $doctor, Genre $genre, Area $area)
+    {
+        $this->doctor = $doctor;
+        $this->genre = $genre;
+        $this->area = $area;
+    }
+
+
     public function all(Request $request)
     {
         $page = $request->get('page') ? $request->get('page') - 1 : 0;
-
-        $doctors = DB::table('doctors')
-            ->join('areas', 'doctors.area', '=', 'areas.id')
-            ->join('genres', 'doctors.genre', '=', 'genres.id')
-            ->select('doctors.*', 'areas.area', 'genres.genre')
-            ->skip(12 * $page)
-            ->take(12)
-            ->get();
-
         $view = $request->get('view');
+
+        $doctors = $this->doctor->getAllDoctors($page);
+
         return view('app.doctors', compact(['doctors', 'view']));
     }
 
     
     public function index(Request $request)
     {
-        $op = $request->get('op');
-        $message = '';
-
-        if (!strcmp($op, 'success'))
-            $message = 'Dados do medico cadastrado com sucesso.';
-
-        else
-            $message = 'Erro ao cadastrar os dados do medico.';
-
-
-        $genres = Genre::all();
-        $areas = Area::all();
-        return view('app.register-doctor', compact(['op', 'message', 'genres', 'areas']));
+        return view('app.register-doctor', [
+            'op'       => $request->get('op'), 
+            'message'  => $request->get('message'), 
+            'genres'   => $this->genre->getAllGenres(), 
+            'areas'    => $this->area->getAllAreas()
+        ]);
     }
 
 
     public function create(StoreDoctor $request) 
     {   
-        $user = Doctor::create($request->validated());
-        return redirect()->route('app.register-doctor', ['op' => 'success']);
+        $this->doctor->create($request->validated());
+
+        return redirect()->route('app.register-doctor', [
+            'op' => 'success', 
+            'message' => 'Dados do medico cadastrado com sucesso.'
+        ]);
     }
 
 
     public function delete(Request $request)
     {
-        $id = $request->get('id');
-        Doctor::find($id)->delete();
+        $this->doctor->deleteDoctorWithId($request->get('id'));
         return redirect()->route('app.doctors');
     }
 
+
     public function reactivate(Request $request)
     {
-        $id = $request->get('id');
-        Doctor::where('id', $id)->restore();
+        $this->doctor->reactivateDoctorWithId($request->get('id'));
         return redirect()->route('app.doctors');
     }
 }

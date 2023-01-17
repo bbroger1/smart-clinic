@@ -10,4 +10,10 @@ class Genre extends Model
     use HasFactory;
 
     protected $fillable = ['genre'];
+
+
+    public function getAllGenres()
+    {
+        return $this->all();
+    }
 }
