@@ -147,6 +147,22 @@ svg.w-5 {
     display: none !important;
 }
 
+.link-edit {
+    display: block;
+
+    width: 100px;
+    height: 30px;
+
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+
+    border-radius: 5px;
+
+    color: var(--primary-color);
+    background: var(--primary-bg-color);
+}
+
 @media (min-width: 1024px) {
     .main {
         padding: 20px;

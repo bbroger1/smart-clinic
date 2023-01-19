@@ -66,7 +66,11 @@
         </div>
 
         <div class="row right">
-            <form action="{{ route($doctor->deleted_at ? 'app.delete-doctor' : 'app.active-doctor') }}" method="POST">
+            <div>
+                <a href="{{ route('app.edit-doctor', $doctor->id) }}" class="link-edit">Editar</a>
+            </div>
+
+            <form action="{{ route($doctor->deleted_at ? 'app.active-doctor' : 'app.delete-doctor') }}" method="POST">
                 @csrf
                 @method($doctor->deleted_at ? 'put' : 'delete')
 

@@ -25,11 +25,14 @@ Route::prefix('app')->group(function () {
 
     Route::prefix('/doctors')->group(function () {
         Route::get('/', [DoctorController::class, 'all'])->name('app.doctors');
-        
+
         Route::get('/register', [DoctorController::class, 'index'])->name('app.register-doctor');
         Route::post('/register', [DoctorController::class, 'create'])->name('app.register-doctor');
         Route::delete('/delete', [DoctorController::class, 'delete'])->name('app.delete-doctor');
-        Route::put('/update', [DoctorController::class, 'reactivate'])->name('app.active-doctor');
+        Route::put('/desable', [DoctorController::class, 'reactivate'])->name('app.active-doctor');
+
+        Route::get('/edit/{id}', [DoctorController::class, 'edit'])->name('app.edit-doctor');
+        Route::put('/update/{id}', [DoctorController::class, 'update'])->name('app.update-doctor');
     });
 
 });

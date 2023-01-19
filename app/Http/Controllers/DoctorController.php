@@ -37,7 +37,7 @@ class DoctorController extends Controller
     
     public function index(Request $request)
     {
-        return view('app.register-doctor', [
+        return view('app.doctor.create', [
             'op'       => $request->get('op'), 
             'message'  => $request->get('message'), 
             'genres'   => $this->genre->getAllGenres(), 
@@ -67,6 +67,21 @@ class DoctorController extends Controller
     public function reactivate(Request $request)
     {
         $this->doctor->reactivateDoctorWithId($request->get('id'));
+        return redirect()->route('app.doctors');
+    }
+
+    public function edit(int $id)
+    {
+        return view('app.doctor.edit', [
+            'doctor' => $this->doctor->findDoctor($id),
+            'genres'   => $this->genre->getAllGenres(), 
+            'areas'    => $this->area->getAllAreas()
+        ]);
+    }
+
+    public function update(StoreDoctor $request, int $id)
+    {
+        $this->doctor->updateDoctor($request->validated(), $id);
         return redirect()->route('app.doctors');
     }
 }

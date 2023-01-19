@@ -24,7 +24,7 @@
                     </button>
             
                     <form 
-                        action="{{ route($doctor->deleted_at ? 'app.delete-doctor' : 'app.active-doctor') }}" 
+                        action="{{ route($doctor->deleted_at ? 'app.active-doctor' : 'app.delete-doctor') }}" 
                         method="POST">
                             @csrf
                             @method($doctor->deleted_at ? 'put' : 'delete')

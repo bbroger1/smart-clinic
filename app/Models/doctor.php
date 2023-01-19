@@ -42,4 +42,15 @@ class Doctor extends Model
     {
         return $this->where('id', $id)->restore();
     }
+
+    public function findDoctor(int $id)
+    {
+        return $this->find($id);
+    }
+
+
+    public function updateDoctor(array $data, int $id)
+    {
+        return $this->findDoctor($id)->update($data);
+    }
 }
