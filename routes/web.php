@@ -25,6 +25,7 @@ Route::prefix('app')->group(function () {
 
     Route::prefix('/doctors')->group(function () {
         Route::get('/', [DoctorController::class, 'all'])->name('app.doctors');
+        
         Route::get('/register', [DoctorController::class, 'index'])->name('app.register-doctor');
         Route::post('/register', [DoctorController::class, 'create'])->name('app.register-doctor');
         Route::delete('/delete', [DoctorController::class, 'delete'])->name('app.delete-doctor');

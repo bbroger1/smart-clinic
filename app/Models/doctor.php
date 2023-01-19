@@ -17,15 +17,13 @@ class Doctor extends Model
     protected $fillable = ['name', 'lastName', 'phoneNumber', 'cpf', 'genre', 'city', 'uf', 'area'];
 
 
-    public function getAllDoctors(int $page)
+    public function getAllDoctors()
     {
         $doctors = DB::table('doctors')
             ->join('areas', 'doctors.area', '=', 'areas.id')
             ->join('genres', 'doctors.genre', '=', 'genres.id')
             ->select('doctors.*', 'areas.area', 'genres.genre')
-            ->skip(12 * $page)
-            ->take(12)
-            ->get();
+            ->paginate(12);
 
         return $doctors;
     }

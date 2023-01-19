@@ -11,26 +11,8 @@ function setParamFromURL(param, value) {
     return url.href
 }
 
-function handlePageNavigation() {
-    const page = getParamFromURL('page')
-
-    const newValue = page && page > 1 ? Number(page) : 1
-
-    document.querySelector('p.page-count').innerText = newValue
-
-    const oldPage = document.querySelector('button#old-page')
-    const nextPage = document.querySelector('button#next-page')
-
-    oldPage.disabled = newValue == 1
-
-    oldPage.addEventListener('click', () => window.location.href = setParamFromURL('page', newValue - 1))
-    nextPage.addEventListener('click', () => window.location.href = setParamFromURL('page', newValue + 1))
-}
-
 
 function handlePageLoad() {
-    handlePageNavigation()
-
     const buttonCloseProfileElement = document.querySelector('button#close-modal'),
           profileModalElement = document.querySelector('aside.profile-view')
 

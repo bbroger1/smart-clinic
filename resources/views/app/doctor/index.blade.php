@@ -25,17 +25,7 @@
             @endcomponent
         </div>
 
-        <div class="buttons">
-            <div>
-                <button class="change-page" id="old-page">Anterior</button>
-            </div>
-
-            <p class="page-count">1</p>
-
-            <div>
-                <button class="change-page" id="next-page">Proxima</button>
-            </div>
-        </div>
+        {{ $doctors->links() }}
     </main>
 
     @if ($view > 0)

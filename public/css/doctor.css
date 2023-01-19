@@ -71,7 +71,7 @@
 }
 
 .right {
-    justify-content: right;
+    justify-content: space-between;
 }
 
 .label {
@@ -136,27 +136,15 @@
     color: var(--red-color);
 }
 
-.buttons {
-    height: 30px;
-
-    margin-top: 40px;
-
+nav[role="navigation"] :first-child {
     display: flex;
     justify-content: space-between;
+    margin: 4px 0;
 }
 
-.change-page {
-    height: 100%;
-    padding: 0 30px;
-
-    font-family: var(--primary-font);
-    font-weight: bold;
-
-    cursor: pointer;
-
-    border-radius: 10px;
-    border: none;
-    background: var(--primary-bg-color);
+p.text-sm,
+svg.w-5 {
+    display: none !important;
 }
 
 @media (min-width: 1024px) {

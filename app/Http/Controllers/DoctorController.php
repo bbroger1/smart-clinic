@@ -28,12 +28,10 @@ class DoctorController extends Controller
 
     public function all(Request $request)
     {
-        $page = $request->get('page') ? $request->get('page') - 1 : 0;
-        $view = $request->get('view');
-
-        $doctors = $this->doctor->getAllDoctors($page);
-
-        return view('app.doctors', compact(['doctors', 'view']));
+        return view('app.doctor.index', [
+            'doctors' => $this->doctor->getAllDoctors(), 
+            'view' => $request->get('view')
+        ]);
     }
 
     
