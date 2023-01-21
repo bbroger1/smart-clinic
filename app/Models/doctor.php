@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Area;
 use App\Models\Genre;
 
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class Doctor extends Model
 {
@@ -30,7 +30,7 @@ class Doctor extends Model
 
     public function getAllDoctors()
     {
-        return $this->paginate(12);
+        return DB::table('doctors')->paginate(12);
     }
     
     public function store(array $data)
