@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col">
                 <p class="label">Sexo:</p>
-                <p class="value">{{ $doctor->genre }}</p>
+                <p class="value">{{ $doctor->getGenre->genre }}</p>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col">
                 <p class="label">Área de atuação:</p>
-                <p class="value">{{ $doctor->area }}</p>
+                <p class="value">{{ $doctor->getArea->area }}</p>
             </div>
         </div>
 

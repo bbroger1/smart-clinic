@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use App\Models\Area;
+use App\Models\Genre;
 
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class Doctor extends Model
 {
@@ -16,16 +18,19 @@ class Doctor extends Model
 
     protected $fillable = ['name', 'lastName', 'phoneNumber', 'cpf', 'genre', 'city', 'uf', 'area'];
 
+    public function getGenre()
+    {
+        return $this->hasOne(Genre::class, 'id');
+    }
+
+    public function getArea()
+    {
+        return $this->hasOne(Area::class, 'id');
+    }
 
     public function getAllDoctors()
     {
-        $doctors = DB::table('doctors')
-            ->join('areas', 'doctors.area', '=', 'areas.id')
-            ->join('genres', 'doctors.genre', '=', 'genres.id')
-            ->select('doctors.*', 'areas.area', 'genres.genre')
-            ->paginate(12);
-
-        return $doctors;
+        return $this->paginate(12);
     }
     
     public function store(array $data)
