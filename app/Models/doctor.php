@@ -30,9 +30,9 @@ class Doctor extends Model
 
     public function getAllDoctors()
     {
-        return DB::table('doctors')->paginate(12);
+        return $this->withTrashed()->paginate(12);
     }
-    
+
     public function store(array $data)
     {
         return $this->create($data);

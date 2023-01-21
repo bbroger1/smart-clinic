@@ -23,12 +23,14 @@
                             <i class="fa-solid fa-eye"></i>
                     </button>
             
-                    <form 
-                        action="{{ route($doctor->deleted_at ? 'app.active-doctor' : 'app.delete-doctor') }}" 
-                        method="POST">
+                    @if ($doctor->deleted_at)
+                    <form action="{{ route('app.active-doctor') }}" method="POST">
+                        @method('put')
+                    @else
+                    <form action="{{ route('app.delete-doctor') }}" method="POST">
+                        @method('DELETE')
+                    @endif
                             @csrf
-                            @method($doctor->deleted_at ? 'put' : 'delete')
-                            
                             <input type="hidden" value="{{ $doctor->id }}" name="id" />
         
                             <button 
