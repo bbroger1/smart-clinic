@@ -77,15 +77,24 @@
             <form action="{{ route('app.delete-doctor') }}" method="POST">
                 @method('DELETE')
             @endif
+
                 @csrf
                 <input type="hidden" name="id" value="{{ $doctor->id }}">
 
+            @if ($doctor->deleted_at)
                 <button 
-                    class="desable-profile {{ $doctor->deleted_at ? 'green' : 'red' }}" 
-                    aria-label="Botão para {{$doctor->deleted_at ? 'ativar' : 'desativar' }} perfil">
-                        <i class="fa-solid fa-lock{{ $doctor->deleted_at ? '-open' : '' }}"></i> 
-                        {{$doctor->deleted_at ? 'ativar' : 'desativar' }}
+                    class="desable-profile green" 
+                    aria-label="Botão para ativar perfil">
+                        <i class="fa-solid fa-lock-open"></i> ativar
                 </button>
+            @else
+                <button 
+                    class="desable-profile red" 
+                    aria-label="Botão para desativar perfil">
+                        <i class="fa-solid fa-lock"></i> desativar
+                </button>
+            @endif
+                
             </form>
         </div>
     </div>

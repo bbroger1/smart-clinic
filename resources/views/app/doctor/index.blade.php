@@ -17,11 +17,10 @@
     <main class="main">
         <h2 class="title">Medicos cadastrados</h2>
 
-        {{-- @component('app.layout.components.message', ['op' => $op, 'message' => $message])
-        @endcomponent --}}
-
         <div>
-            @component('app.layout.components.doctor-table', ['doctors' => $doctors])
+            @component('app.doctor.layout.components.doctor-table', [
+                'doctors' => $doctors
+            ])
             @endcomponent
         </div>
 
@@ -29,7 +28,9 @@
     </main>
 
     @if ($view > 0)
-        @component('app.layout.components.doctor-information', ['doctor' => $doctors[ ($view - 1) % 12 ]])
+        @component('app.doctor.layout.components.doctor-information', [
+            'doctor' => $doctors[ ($view - 1) % 12 ]
+        ])
         @endcomponent
     @endif
 </div>

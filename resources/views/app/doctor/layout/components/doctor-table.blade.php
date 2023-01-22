@@ -33,12 +33,21 @@
                             @csrf
                             <input type="hidden" value="{{ $doctor->id }}" name="id" />
         
-                            <button 
-                                type="submit"
-                                class="button {{ $doctor->deleted_at ? 'red' : 'green' }}" 
-                                aria-label="Botão para {{$doctor->deleted_at ? 'desativar' : 'ativar'}} perfil">
-                                    <i class="fa-solid fa-lock{{ $doctor->deleted_at ? '' : '-open' }}"></i>
-                            </button>
+                    @if ($doctor->deleted_at)
+                        <button 
+                            type="submit"
+                            class="button red" 
+                            aria-label="Botão para desativar perfil">
+                                <i class="fa-solid fa-lock"></i>
+                        </button>
+                    @else
+                        <button 
+                            type="submit"
+                            class="button green" 
+                            aria-label="Botão para ativar perfil">
+                                <i class="fa-solid fa-lock-open"></i>
+                        </button>
+                    @endif
                     </form>
                 </div>
             </td>
