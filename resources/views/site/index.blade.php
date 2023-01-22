@@ -1,57 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendar um horário</title>
+@extends('site.layout.base')
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/calendar.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}" />
-</head>
-<body>
+@section('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/calendar.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}" />
+@endsection
 
+@section('body')
     <div class="app">
         <main class="container">
-            <div class="large-calendar">
-                <div class="calendar-header">
-                    <h3 id="calendar-title">loading...</h3>
-
-                    <div class="row-buttons">
-                        <button aria-label="Botão para mudar para proximo mes" class="header-button" id="left">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
-
-                        <button aria-label="Botão para mudar para proximo mes" class="header-button" id="right">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="calendar-body">
-                    <table class="table" cellspacing="5">
-                        <thead>
-                            <tr>
-                                <th>DOM</th>
-                                <th>SEG</th>
-                                <th>TER</th>
-                                <th>QUA</th>
-                                <th>QUI</th>
-                                <th>SEX</th>
-                                <th>SAB</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="table-body">
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            @include('layout.partials.large-calendar')
 
             <div class="form-container">
                 <h2 class="title">Dados</h2>
@@ -114,5 +72,4 @@
     </div>
 
     <script type="text/javascript" src="{{ asset('script/large-calendar.js') }}"></script>
-</body>
-</html>
+@endsection

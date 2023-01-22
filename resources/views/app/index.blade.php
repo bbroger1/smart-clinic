@@ -13,7 +13,7 @@
             <i class="fa-solid fa-bars"></i>
         </button>
 
-        @include('app.layout.partials.menu')
+        @include('layout.partials.menu')
 
         <main class="main">
             <h1 class="title">Dashboard</h1>

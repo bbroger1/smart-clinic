@@ -15,11 +15,11 @@
         </button>
 
         <div class="grid">
-            @include('app.layout.partials.menu')
+            @include('layout.partials.menu')
     
             <main class="main container">
                 <h2 class="title">Agenda</h2>
-                @include('app.layout.partials.large-calendar')
+                @include('layout.partials.large-calendar')
             </main>
     
             <aside class="querys container">
