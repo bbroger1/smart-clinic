@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\SiteController;
 
-Route::get('/', function () {
-    return view('site.index');
+
+Route::prefix('agenda')->group(function () {
+    Route::get('/', [SiteController::class, 'step01'])->name('site.index');
+    Route::post('/', [SiteController::class, 'step02'])->name('site.index');
 });
-
 
 Route::prefix('app')->group(function () {
     Route::get('/', function () {
@@ -36,3 +38,6 @@ Route::prefix('app')->group(function () {
     });
 
 });
+
+
+Route::redirect('/', '/agenda');

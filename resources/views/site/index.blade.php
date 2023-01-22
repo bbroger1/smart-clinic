@@ -9,64 +9,49 @@
 @section('body')
     <div class="app">
         <main class="container">
+            @unless(isset($areaOptions))
             @include('layout.partials.large-calendar')
+            @endunless
 
             <div class="form-container">
-                <h2 class="title">Dados</h2>
 
-                <form action="index.html" method="POST">
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" placeholder="Nome de usuario" class="input" />
-                            <p class="error">Mensagem de erro</p>
-                        </div>
-                    </div>
+                @if (isset($areaOptions))
+                <div class="step-one">
+                    <h2 class="title">Deseja agendar uma consulta?</h2>
 
-                    <div class="row">
-                        <div class="col">
-                            <input type="email" placeholder="Email" class="input" />
-                            <p class="error">Mensagem de erro</p>
-                        </div>
-                    </div>
+                    <form action="{{ route('site.index') }}" method="POST">
+                        @csrf
 
-                    <div class="row">
-                        <div class="col">
-                            <select name="sexo" class="input">
-                                <option selected>Sexo</option>
-                                <option>Masculino</option>
-                                <option>Feminino</option>
-                                <option>Transgênero</option>
-                                <option>Gênero Neutro</option>
-                                <option>Não-binário</option>
-                                <option>Agênero</option>
-                            </select>
-                            <p class="error">O campo é obrigatório</p>
+                        <div class="row">
+                            <div class="col">
+                                <label for="area-option" class="label">Selecione a area da consulta:</label>
+
+                                <select name="area" class="input" id="area-option">
+                                    <option value="">Selecione a area</option>
+
+                                    @foreach ($areaOptions as $area)
+                                        <option value="{{ $area->id }}">{{ $area->area }}</option>
+                                    @endforeach
+
+                                </select>
+                                <p class="error">Mensagem de erro</p>
+                            </div>
                         </div>
 
-                        <div class="col">
-                            <select name="sexo" class="input">
-                                <option selected>Selecione o medico</option>
-                                <option>Dr. João</option>
-                                <option>Dr. Andrews</option>
-                                <option>Dr. Shaun Murphy</option>
-                            </select>
-                            <p class="error">O campo é obrigatório</p>
+                        <div class="align-button">
+                            <button type="submit" class="form-button">
+                                Continuar
+                            </button>
                         </div>
-                    </div>
+                    </form>
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <textarea name="message" class="input textarea">Messagem adicional</textarea>
-                            <p class="error">O campo é obrigatório</p>
-                        </div>
+                @else
+                    <h2 class="title">Dados</h2> 
+                    <div>
+                        @include('site.layout.components.form')
                     </div>
-
-                    <div class="align-button">
-                        <button type="submit" class="form-button">
-                            Cadastrar
-                        </button>
-                    </div>
-                </form>
+                @endif
             </div>
         </main>
     </div>
