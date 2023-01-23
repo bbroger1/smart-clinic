@@ -31,7 +31,7 @@ class GetAreasDoctors extends FormRequest
     public function attributes()
     {
         return [
-            'area' => 'Area de atuação'
+            'area' => 'area de atuação'
         ];
     }
 }

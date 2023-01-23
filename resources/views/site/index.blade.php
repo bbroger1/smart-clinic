@@ -34,7 +34,9 @@
                                     @endforeach
 
                                 </select>
-                                <p class="error">Mensagem de erro</p>
+                                @error('area')
+                                <p class="error">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
 
