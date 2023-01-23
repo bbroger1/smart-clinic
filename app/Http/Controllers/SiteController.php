@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Area;
+use App\Models\Doctor;
 
 use App\Http\Requests\GetAreasDoctors;
 
 class SiteController extends Controller
 {
     protected Area $area;
+    protected Doctor $doctor;
 
-    public function __construct(Area $area)
+    public function __construct(Area $area, Doctor $doctor)
     {
         $this->area = $area;
+        $this->doctor = $doctor;
     }
 
     public function step01()
@@ -28,7 +31,7 @@ class SiteController extends Controller
         $request->validated();
 
         return view('site.index', [
-            'options' => 'ok'
+            'doctors' => $this->doctor->getDoctorsWithArea($request->get('area'))
         ]);
     }
 }

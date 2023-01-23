@@ -24,6 +24,10 @@
         <div class="col">
             <select name="sexo" class="input">
                 <option selected value="">Selecione o medico</option>
+
+                @foreach ($doctors as $doctor)
+                <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                @endforeach
             </select>
             <p class="error">O campo é obrigatório</p>
         </div>

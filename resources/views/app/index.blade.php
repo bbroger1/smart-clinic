@@ -55,7 +55,7 @@
         <div class="little-agenda">
             <h2 class="title">Agenda</h2>
 
-            @include('app.layout.partials.small-calendar')
+            @include('layout.partials.small-calendar')
 
             @component('app.layout.components.query', [
                 'query' => [

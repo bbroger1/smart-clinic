@@ -51,7 +51,7 @@
                 @else
                     <h2 class="title">Dados</h2> 
                     <div>
-                        @include('site.layout.components.form')
+                        @include('site.layout.components.form', ['doctors' => $doctors])
                     </div>
                 @endif
             </div>

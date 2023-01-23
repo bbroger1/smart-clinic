@@ -20,12 +20,12 @@ class Doctor extends Model
 
     public function getGenre()
     {
-        return $this->hasOne(Genre::class, 'id');
+        return $this->hasOne(Genre::class, 'id', 'genre');
     }
 
     public function getArea()
     {
-        return $this->hasOne(Area::class, 'id');
+        return $this->hasOne(Area::class, 'id', 'area');
     }
 
     public function getAllDoctors()
@@ -57,5 +57,10 @@ class Doctor extends Model
     public function updateDoctor(array $data, int $id)
     {
         return $this->findDoctor($id)->update($data);
+    }
+
+    public function getDoctorsWithArea(int $areaOption)
+    {
+        return $this->where('area', $areaOption)->get();
     }
 }
