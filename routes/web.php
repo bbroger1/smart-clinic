@@ -6,8 +6,10 @@ use App\Http\Controllers\SiteController;
 
 
 Route::prefix('agenda')->group(function () {
-    Route::get('/', [SiteController::class, 'step01'])->name('site.index');
-    Route::post('/', [SiteController::class, 'step02'])->name('site.index');
+    Route::get('/step01', [SiteController::class, 'step01'])->name('site.step1');
+    Route::get('/step02', [SiteController::class, 'step02'])->name('site.step2');
+
+    Route::post('/create', [SiteController::class, 'create'])->name('site.create');
 });
 
 Route::prefix('app')->group(function () {
@@ -40,4 +42,4 @@ Route::prefix('app')->group(function () {
 });
 
 
-Route::redirect('/', '/agenda');
+Route::redirect('/', '/agenda/step01');

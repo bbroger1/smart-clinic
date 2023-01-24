@@ -1,42 +1,94 @@
-<form action="index.html" method="POST">
+<form action="{{ route('site.create') }}" method="POST">
+    @csrf
+
+    <input type="hidden" name="date" id="date" value="{{ old('date') }}" />
+
     <div class="row">
         <div class="col">
-            <input type="text" placeholder="Nome de usuario" class="input" />
-            <p class="error">Mensagem de erro</p>
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Nome de usuario" 
+                class="input" 
+                value="{{ old('name') }}" />
+            
+            @error ('name')
+            <p class="error">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="col">
+            <input 
+                type="time" 
+                name="time" 
+                class="input" 
+                value="{{ old('time') }}" />
+            
+            @error ('time')
+            <p class="error">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Email" 
+                class="input"
+                value="{{ old('email') }}" />
+
+            @error ('email')
+            <p class="error">{{ $message }}</p>
+            @enderror
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <input type="email" placeholder="Email" class="input" />
-            <p class="error">Mensagem de erro</p>
-        </div>
-    </div>
+            <select name="genre" class="input">
+                <option value="">Sexo</option>
 
-    <div class="row">
-        <div class="col">
-            <select name="sexo" class="input">
-                <option selected value="">Sexo</option>
-            </select>
-            <p class="error">O campo é obrigatório</p>
-        </div>
-
-        <div class="col">
-            <select name="sexo" class="input">
-                <option selected value="">Selecione o medico</option>
-
-                @foreach ($doctors as $doctor)
-                <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                @foreach ($genres as $genre)
+                    <option 
+                        value="{{ $genre->id }}" 
+                        {{ old('genre') == $genre->id ? 'selected' : '' }}>
+                            {{ $genre->genre }}
+                    </option>
                 @endforeach
             </select>
-            <p class="error">O campo é obrigatório</p>
+
+            @error ('genre')
+            <p class="error">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div class="col">
+            <select name="doctor" class="input">
+                <option value="">Selecione o medico</option>
+
+                @foreach ($doctors as $doctor)
+                <option 
+                    value="{{ $doctor->id }}"
+                    {{ old('doctor') == $doctor->id ? 'selected' : '' }}>
+                        {{ $doctor->name }}
+                </option>
+                @endforeach
+            </select>
+            
+            @error ('doctor')
+            <p class="error">{{ $message }}</p>
+            @enderror
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <textarea name="message" class="input textarea">Messagem adicional</textarea>
-            <p class="error">O campo é obrigatório</p>
+            <textarea name="message" class="input textarea">{{ old('message') ?? 'Messagem adicional' }}</textarea>
+            @error ('message')
+            <p class="error">{{ $message }}</p>
+            @enderror
         </div>
     </div>
 

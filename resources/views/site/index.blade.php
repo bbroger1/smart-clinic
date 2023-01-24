@@ -19,7 +19,7 @@
                 <div class="step-one">
                     <h2 class="title">Deseja agendar uma consulta?</h2>
 
-                    <form action="{{ route('site.index') }}" method="POST">
+                    <form action="{{ route('site.step2') }}" method="GET">
                         @csrf
 
                         <div class="row">
@@ -51,7 +51,8 @@
                 @else
                     <h2 class="title">Dados</h2> 
                     <div>
-                        @include('site.layout.components.form', ['doctors' => $doctors])
+                        @component('site.layout.components.form', ['doctors' => $doctors, 'genres' => $genres])
+                        @endcomponent
                     </div>
                 @endif
             </div>

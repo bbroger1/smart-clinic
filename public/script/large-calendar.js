@@ -109,10 +109,19 @@ function addHandleClickChangeMonth(date) {
     })
 }
 
+function changeInputDate(date) {
+    const dateInput = document.querySelector('input#date')
+    const day = getParamFromUrl('day') || new Date().getDate()
+    const stringMonth = String(date.getMonth() + 1)
+
+    dateInput.value = `${date.getFullYear()}-${stringMonth.padStart(2, '0')}-${day}`
+}
+
 window.addEventListener('load', () => {
     const date = getDateFromUrlParams()
 
     addHandleClickChangeMonth(date)
     applyTitleCalendar(date)
     createCalendarBody(date)
+    changeInputDate(date)
 })
