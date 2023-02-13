@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Area;
 use App\Models\Doctor;
 use App\Models\Genre;
+use App\Models\Query;
 
 use App\Http\Requests\GetAreasDoctors;
 use App\Http\Requests\StoreQuery;
@@ -15,12 +16,14 @@ class SiteController extends Controller
     protected Area $area;
     protected Doctor $doctor;
     protected Genre $genre;
+    protected Query $query;
 
-    public function __construct(Area $area, Genre $genre, Doctor $doctor)
+    public function __construct(Area $area, Genre $genre, Doctor $doctor, Query $query)
     {
         $this->area = $area;
         $this->genre = $genre;
         $this->doctor = $doctor;
+        $this->query = $query;
     }
 
     public function step01()
@@ -43,6 +46,6 @@ class SiteController extends Controller
 
     public function create(StoreQuery $request)
     {
-        dd($request->validated());
+        $this->query->store($request->validated());
     }
 }

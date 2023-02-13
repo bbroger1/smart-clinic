@@ -9,5 +9,10 @@ class Query extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'time', 'date', 'email', 'genre_id', 'doctor_id', 'message'];
+    protected $fillable = ['name', 'time', 'date', 'email', 'genre', 'doctor', 'message'];
+
+
+    public function store(array $data) {
+        $this->create($data);
+    }
 }
