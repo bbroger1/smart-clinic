@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Area;
 use App\Models\Genre;
 
-use Illuminate\Support\Facades\DB;
 
 class Doctor extends Model
 {

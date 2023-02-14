@@ -27,8 +27,8 @@ class DashboardController extends Controller
         else
             $date = date('Y-m-d');
 
-        
-        $this->query->getQueryOfDate($date);
-        return view('app.index');
+        return view('app.index', [
+            'querys' => $this->query->getQueryOfDate($date)
+        ]);
     }
 }
