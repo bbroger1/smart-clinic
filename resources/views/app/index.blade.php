@@ -30,22 +30,16 @@
                 <div>
                     @component('app.layout.components.notification', [
                         'message' => 'O cliente Edinho cancelou a consulta (07/01).',
-                        'status' => 'Cancelou',
-                        'type' => 'canceled'
                     ])
                     @endcomponent
 
                     @component('app.layout.components.notification', [
                         'message' => 'O cliente Edinho confirmou a consulta (07/01).',
-                        'status' => 'Confirmou',
-                        'type' => 'confirm'
                     ])
                     @endcomponent
 
                     @component('app.layout.components.notification', [
                         'message' => 'O cliente Edinho quer agendar uma consulta.',
-                        'status' => 'Novo',
-                        'type' => 'new'
                     ])
                     @endcomponent
                 </div>
