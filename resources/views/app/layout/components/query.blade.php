@@ -6,7 +6,22 @@
             </div>
 
             <div class="data-container">
-                <h3 class="patiente">{{ $data->name }}</h3>
+                <div class="flex">
+                    <h3 class="patiente">{{ $data->name }}</h3>
+
+                    @unless ($hidden)
+                    <div class="link-action">
+                        <a href="{{ route('app.confirm', $data->id) }}" class="btn-link confirm">
+                            Confirmar
+                        </a>
+    
+                        <a href="{{ route('app.cancel', $data->id) }}" class="btn-link canceled">
+                            Cancelar
+                        </a>
+                    </div>
+                    @endunless
+                </div>
+                
 
                 <div class="query-data">
                     <p class="query-title">{{ $data->getDoctor->name }}</p>

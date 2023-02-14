@@ -57,7 +57,10 @@
 
             @include('layout.partials.small-calendar')
 
-            @component('app.layout.components.query', ['query' => $querys])
+            @component('app.layout.components.query', [
+                'query' => $querys, 
+                'hidden' => true,
+            ])
             @endcomponent
         </div>
     </div>

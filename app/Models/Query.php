@@ -32,6 +32,18 @@ class Query extends Model
     }
 
 
+    public function confirm(int $id) {
+        $queryToConfirm = $this->where('id', $id)->first();
+        $queryToConfirm->status = 2;
+        $queryToConfirm->save();
+    }
+
+    public function cancel(int $id) {
+        $queryToCancel = $this->where('id', $id)->first();
+        $queryToCancel->status = 3;
+        $queryToCancel->save();
+    }
+
     public function getQueryOfDate($date) {
         return $this->where('date', $date)->get();
     }

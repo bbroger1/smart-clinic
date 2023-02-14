@@ -16,8 +16,12 @@ Route::prefix('agenda')->group(function () {
 
 Route::prefix('app')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('app.home');
-    Route::get('/agenda', [AgendaController::class, 'index'])->name('app.agenda');
 
+    Route::prefix('agenda')->group(function () {
+        Route::get('/', [AgendaController::class, 'index'])->name('app.agenda');
+        Route::get('/confirm/{id}', [AgendaController::class, 'confirm'])->name('app.confirm');
+        Route::get('/canceled/{id}', [AgendaController::class, 'cancel'])->name('app.cancel');
+    });
     
     Route::get('/login', function () {
         return view('app.login');

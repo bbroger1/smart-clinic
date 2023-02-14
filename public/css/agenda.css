@@ -21,6 +21,31 @@
     margin-top: 20px;
 }
 
+.link-action {
+    display: flex;
+    justify-content: right;
+    gap: 5px;
+
+    padding-top: 5px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-link {
+    display: block;
+
+    text-decoration: none;
+    border-radius: 5px;
+
+    font-size: 1.2rem;
+
+    padding: 5px 10px;
+}
+
 @media (min-width: 768px) {
     .grid {
         display: flex;

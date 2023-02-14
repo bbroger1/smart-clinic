@@ -25,7 +25,10 @@
             <aside class="querys container">
                 <h3 class="title">Consutas do dia</h3>
     
-                @component('app.layout.components.query', ['query' => $querys])
+                @component('app.layout.components.query', [
+                    'query' => $querys,
+                    'hidden' => false,
+                ])
                 @endcomponent
             </aside>
         </div>

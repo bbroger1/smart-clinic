@@ -30,4 +30,15 @@ class AgendaController extends Controller
             'querys' => $this->query->getQueryOfDate($date)
         ]);
     }
+
+    public function confirm(int $id) {
+        $this->query->confirm($id);
+
+        return redirect()->route('app.agenda');
+    }
+
+    public function cancel(int $id) {
+        $this->query->cancel($id);
+        return redirect()->route('app.agenda');
+    }
 }
