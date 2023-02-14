@@ -1,7 +1,7 @@
 <div class="query-area">
     @foreach ($query as $key => $data)
         <div class="query">
-            <div class="icon-query confirm">
+            <div class="icon-query {{ $data->getStatus->title }}">
                 <i class="fa-solid fa-calendar-days"></i>
             </div>
 
