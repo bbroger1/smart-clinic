@@ -25,22 +25,7 @@
             <aside class="querys container">
                 <h3 class="title">Consutas do dia</h3>
     
-                @component('app.layout.components.query', [
-                    'query' => [
-                        0 => [
-                            'user' => 'Edinho Sousa',
-                            'doctor' => 'Dr. João Pedro',
-                            'hour' => '08:00',
-                            'status' => 'canceled'
-                        ],
-                        1 => [
-                            'user' => 'Jose Maria',
-                            'doctor' => 'Dr. João Pedro',
-                            'hour' => '09:00',
-                            'status' => 'confirm'
-                        ]
-                    ]
-                ])
+                @component('app.layout.components.query', ['query' => $querys])
                 @endcomponent
             </aside>
         </div>
