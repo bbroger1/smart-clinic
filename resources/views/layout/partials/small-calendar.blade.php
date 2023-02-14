@@ -8,6 +8,8 @@
             </button>
         </div>
 
+        <p class="calendar-month">Janeiro de 2023</p>
+
         <div>
             <button
                 aria-label="Ir para o proximo dia"
@@ -22,7 +24,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 14"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">DOM</p>
                     <span class="day-number"></span>
             </button>
@@ -32,7 +36,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 10"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">SEG</p>
                     <span class="day-number"></span>
             </button>
@@ -42,7 +48,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 11"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">TER</p>
                     <span class="day-number"></span>
             </button>
@@ -52,7 +60,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 12"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">QUA</p>
                     <span class="day-number"></span>
             </button>
@@ -62,7 +72,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 13"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">QUI</p>
                     <span class="day-number"></span>
             </button>
@@ -72,7 +84,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 14"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">SEX</p>
                     <span class="day-number"></span>
             </button>
@@ -82,7 +96,9 @@
             <button 
                 aria-label="Botão para mudar para agenda do dia 14"
                 class="calendar-button"
-                data-day="">
+                data-day=""
+                data-month=""
+                data-year="">
                     <p class="weet-day">SAB</p>
                     <span class="day-number"></span>
             </button>

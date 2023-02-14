@@ -148,6 +148,11 @@
     background: none;
 }
 
+.calendar-month {
+    font-family: var(--font-family);
+    font-weight: bold;
+}
+
 .calendar-container {
     width: 100%;
 

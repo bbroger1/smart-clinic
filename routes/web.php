@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::prefix('agenda')->group(function () {
@@ -13,9 +14,7 @@ Route::prefix('agenda')->group(function () {
 });
 
 Route::prefix('app')->group(function () {
-    Route::get('/', function () {
-        return view('app.index');
-    })->name('app.home');
+    Route::get('/', [DashboardController::class, 'index'])->name('app.home');
 
     Route::get('/agenda', function () {
         return view('app.agenda');

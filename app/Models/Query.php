@@ -15,4 +15,9 @@ class Query extends Model
     public function store(array $data) {
         $this->create($data);
     }
+
+
+    public function getQueryOfDate($date) {
+        return $this->where('date', $date)->get();
+    }
 }
