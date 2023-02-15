@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AuthMiddleware;
+
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\LoginController;
 
 
 Route::prefix('agenda')->group(function () {
@@ -14,7 +17,13 @@ Route::prefix('agenda')->group(function () {
     Route::post('/create', [SiteController::class, 'create'])->name('site.create');
 });
 
-Route::prefix('app')->group(function () {
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'login'])->name('site.login');
+
+Route::get('/register', [LoginController::class, 'register'])->name('site.register');
+Route::post('/register', [LoginController::class, 'store'])->name('site.register');
+
+Route::middleware([AuthMiddleware::class])->prefix('app')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('app.home');
 
     Route::prefix('agenda')->group(function () {
@@ -22,11 +31,6 @@ Route::prefix('app')->group(function () {
         Route::get('/confirm/{id}', [AgendaController::class, 'confirm'])->name('app.confirm');
         Route::get('/canceled/{id}', [AgendaController::class, 'cancel'])->name('app.cancel');
     });
-    
-    Route::get('/login', function () {
-        return view('app.login');
-    })->name('app.login');
-    
 
     Route::prefix('/doctors')->group(function () {
         Route::get('/', [DoctorController::class, 'all'])->name('app.doctors');

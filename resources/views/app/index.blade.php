@@ -18,7 +18,7 @@
         <main class="main">
             <h1 class="title">Dashboard</h1>
 
-            @component('app.layout.components.banner', [ 'username' => 'Edmar Sousa' ])
+            @component('app.layout.components.banner', [ 'username' => $_SESSION['user'] ])
             @endcomponent
             @component('app.layout.components.finance', [
                 'querysCount' => $queryCount,
@@ -32,12 +32,24 @@
                 <h2 class="title">Notificação</h2>
 
                 <div>
+
+                    @if (count($notifications) > 0)
+
                     @foreach ($notifications as $notification)
                         @component('app.layout.components.notification', [
                             'message' => $notification->message,
                         ])
                         @endcomponent
                     @endforeach
+
+                    @else
+                    <div class="message-empty">
+                        <p class="message-icon">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </p>
+                        <p class="message-text">Sem notificações!</p>
+                    </div>
+                    @endif
                 </div>
             </section>
         </main>

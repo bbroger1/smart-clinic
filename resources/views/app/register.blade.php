@@ -1,6 +1,6 @@
 @extends ('app.layout.base')
 
-@section ('title', 'login')
+@section ('title', 'register')
 
 @section('styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}" />
@@ -10,17 +10,24 @@
 
 <div class="app flex">
     <main class="main">
-        <h2 class="title">Login</h2>
+        <h2 class="title">Register</h2>
 
-        <form action="{{ route('site.login') }}" method="POST" id="form">
+        <form action="{{ route('site.register') }}" method="POST" id="form">
             @csrf()
             @method('POST')
 
-            @isset($message) 
             <div class="row">
-                <p class="error-message">{{ $message }}</p>
+                <input 
+                    type="text" 
+                    name="name" 
+                    value="{{ old('name') ?? '' }}"
+                    placeholder="Nome" 
+                    class="input" />
+                
+                @error('name')
+                <p class="error">{{ $message }}</p>
+                @enderror
             </div>
-            @endisset
 
             <div class="row">
                 <input 
@@ -49,7 +56,7 @@
             </div>
 
             <div class="row">
-                <p class="message">Não tem uma conta? <a href="{{ route('site.register') }}" class="link">Registrar-se</a></p>
+                <p class="message">Não tem uma conta? <a href="{{ route('site.login') }}" class="link">Login</a></p>
             </div>
 
             <div class="align">
