@@ -34,10 +34,10 @@ class DashboardController extends Controller
             $date = date('Y-m-d');
 
         return view('app.index', [
-            'querys' => $this->query->getQueryOfDate($date),
+            'querys'        => $this->query->getQueryOfDate($date),
             'notifications' => $this->notification->getNotifications(),
-            'queryCount' => $this->query->countNumberQuery(),
-            'doctorsCount' => $this->doctors->countAllDoctors(),
+            'queryCount'    => $this->query->countNumberQuery(),
+            'doctorsCount'  => $this->doctors->countAllDoctors(),
             'confimedQuery' => $this->query->countConfimedQuerys(),
         ]);
     }

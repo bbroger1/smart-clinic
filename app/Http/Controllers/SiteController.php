@@ -42,7 +42,7 @@ class SiteController extends Controller
 
         return view('site.index', [
             'doctors' => $this->doctor->getDoctorsWithArea($request->get('area')),
-            'genres' => $this->genre->getAllGenres(),
+            'genres'  => $this->genre->getAllGenres(),
         ]);
     }
 

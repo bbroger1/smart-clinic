@@ -17,9 +17,9 @@ class AgendaController extends Controller
     }
 
     public function index(Request $request) {
-        $day = $request->input('day');
+        $day   = $request->input('day');
         $month = $request->input('month') + 1;
-        $year = $request->input('year');
+        $year  = $request->input('year');
 
         $date = null;
 

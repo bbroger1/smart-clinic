@@ -73,7 +73,7 @@ class DoctorController extends Controller
     public function edit(int $id)
     {
         return view('app.doctor.edit', [
-            'doctor' => $this->doctor->findDoctor($id),
+            'doctor'   => $this->doctor->findDoctor($id),
             'genres'   => $this->genre->getAllGenres(), 
             'areas'    => $this->area->getAllAreas()
         ]);
