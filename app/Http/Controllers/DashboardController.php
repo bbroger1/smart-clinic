@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Query;
+use App\Models\Notification;
 
 class DashboardController extends Controller
 {
     private Query $query;
+    private Notification $notification;
 
-    public function __construct(Query $query) {
+    public function __construct(Query $query, Notification $notification) {
         $this->query = $query;
+        $this->notification = $notification;
     }
 
     public function index(Request $request) {
@@ -28,7 +31,8 @@ class DashboardController extends Controller
             $date = date('Y-m-d');
 
         return view('app.index', [
-            'querys' => $this->query->getQueryOfDate($date)
+            'querys' => $this->query->getQueryOfDate($date),
+            'notifications' => $this->notification->getNotifications(),
         ]);
     }
 }

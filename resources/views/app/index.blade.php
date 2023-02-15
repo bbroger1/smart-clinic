@@ -28,20 +28,12 @@
                 <h2 class="title">Notificação</h2>
 
                 <div>
-                    @component('app.layout.components.notification', [
-                        'message' => 'O cliente Edinho cancelou a consulta (07/01).',
-                    ])
-                    @endcomponent
-
-                    @component('app.layout.components.notification', [
-                        'message' => 'O cliente Edinho confirmou a consulta (07/01).',
-                    ])
-                    @endcomponent
-
-                    @component('app.layout.components.notification', [
-                        'message' => 'O cliente Edinho quer agendar uma consulta.',
-                    ])
-                    @endcomponent
+                    @foreach ($notifications as $notification)
+                        @component('app.layout.components.notification', [
+                            'message' => $notification->message,
+                        ])
+                        @endcomponent
+                    @endforeach
                 </div>
             </section>
         </main>

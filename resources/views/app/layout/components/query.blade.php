@@ -24,7 +24,7 @@
                 
 
                 <div class="query-data">
-                    <p class="query-title">{{ $data->getDoctor->name }}</p>
+                    <p class="query-title">Dr. {{ $data->getDoctor->name }}</p>
                     <p class="query-title">{{ $data->time }}</p>
                 </div>
             </div>
