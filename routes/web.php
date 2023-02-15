@@ -23,6 +23,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('site.login');
 Route::get('/register', [LoginController::class, 'register'])->name('site.register');
 Route::post('/register', [LoginController::class, 'store'])->name('site.register');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('site.logout');
+
 Route::middleware([AuthMiddleware::class])->prefix('app')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('app.home');
 

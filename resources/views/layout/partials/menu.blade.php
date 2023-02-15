@@ -42,4 +42,11 @@
             </a>
         </li>
     </ul>
+
+    <div>
+        <a href="{{ route('site.logout') }}" class="menu-item-link exit-button">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <p class="hidden">Sair</p>
+        </a>
+    </div>
 </nav>

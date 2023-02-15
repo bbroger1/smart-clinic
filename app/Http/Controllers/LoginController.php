@@ -53,4 +53,12 @@ class LoginController extends Controller
         $this->user->store($registerRequest->validated());
         return redirect()->route('site.login');
     }
+
+
+    public function logout() 
+    {
+        session_start();
+        session_destroy();
+        return redirect()->route('site.login');
+    }
 }
