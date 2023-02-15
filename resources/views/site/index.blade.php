@@ -8,6 +8,17 @@
 
 @section('body')
     <div class="app">
+        @if (isset($doctors) and count($doctors) == 0)
+        <div class="container-message">
+            <p class="large-message">Descupe!</p>
+            <p class="small-message">Não temos medicos para a area selecionada</p>
+
+            <a href="{{ route('site.step1') }}" class="button-go-back">
+                <i class="fa-solid fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+        
+        @else
         <main class="container">
             @unless(isset($areaOptions))
             @include('layout.partials.large-calendar')
@@ -57,6 +68,8 @@
                 @endif
             </div>
         </main>
+
+        @endif
     </div>
 
     <script type="text/javascript" src="{{ asset('script/large-calendar.js') }}"></script>

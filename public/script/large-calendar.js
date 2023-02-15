@@ -99,11 +99,11 @@ function addHandleClickChangeMonth(date) {
 
     const newdate = new Date(date.getFullYear(), date.getMonth(), 1)
     
-    changeOldMonth.addEventListener('click', () => { 
+    changeOldMonth?.addEventListener('click', () => { 
         newdate.setMonth(date.getMonth() - 1)
         handleChangeMonth(newdate) 
     })
-    changeNextMonth.addEventListener('click', () => {
+    changeNextMonth?.addEventListener('click', () => {
         newdate.setMonth(date.getMonth() + 1)
         handleChangeMonth(newdate)
     })
