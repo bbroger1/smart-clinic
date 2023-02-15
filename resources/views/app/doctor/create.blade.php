@@ -49,7 +49,8 @@
                     @component('app.layout.components.register-doctor-input', [
                         'type' => 'text',
                         'placeholder' => '(00) 00000-0000',
-                        'name' => 'phoneNumber'
+                        'name' => 'phoneNumber',
+                        'pattern' => '\([0-9]{2}\) [0-9]{5}-[0-9]{4}'
                     ])
                     @endcomponent
                 </div>
@@ -58,7 +59,8 @@
                     @component('app.layout.components.register-doctor-input', [
                         'type' => 'text',
                         'placeholder' => '000.000.000-00',
-                        'name' => 'cpf'
+                        'name' => 'cpf',
+                        'pattern' => '([0-9]{3}){3}\.\-([0-9]){2}'
                     ])
                     @endcomponent
                 </div>

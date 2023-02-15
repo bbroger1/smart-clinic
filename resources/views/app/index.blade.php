@@ -20,7 +20,11 @@
 
             @component('app.layout.components.banner', [ 'username' => 'Edmar Sousa' ])
             @endcomponent
-            @component('app.layout.components.finance')
+            @component('app.layout.components.finance', [
+                'querysCount' => $queryCount,
+                'doctorsCount' => $doctorsCount,
+                'confimedQuery' => $confimedQuery
+            ])
             @endcomponent
             
 
@@ -43,11 +47,22 @@
 
             @include('layout.partials.small-calendar')
 
+            @if (count($querys) > 0)
             @component('app.layout.components.query', [
                 'query' => $querys, 
                 'hidden' => true,
             ])
             @endcomponent
+
+            @else
+            <div class="message-empty">
+                <p class="message-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </p>
+                <p class="message-text">Sem consultas para hoje!</p>
+            </div>
+
+            @endif
         </div>
     </div>
 

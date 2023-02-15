@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Models\Query;
 use App\Models\Notification;
+use App\Models\doctor;
 
 class DashboardController extends Controller
 {
     private Query $query;
     private Notification $notification;
+    private Doctor $doctors;
 
-    public function __construct(Query $query, Notification $notification) {
+    public function __construct(Query $query, Notification $notification, Doctor $doctors) {
         $this->query = $query;
         $this->notification = $notification;
+        $this->doctors = $doctors;
     }
 
     public function index(Request $request) {
@@ -33,6 +36,9 @@ class DashboardController extends Controller
         return view('app.index', [
             'querys' => $this->query->getQueryOfDate($date),
             'notifications' => $this->notification->getNotifications(),
+            'queryCount' => $this->query->countNumberQuery(),
+            'doctorsCount' => $this->doctors->countAllDoctors(),
+            'confimedQuery' => $this->query->countConfimedQuerys(),
         ]);
     }
 }

@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Query;
+use App\Models\Notification;
 
 class AgendaController extends Controller
 {
     private Query $query;
+    private Notification $notification;
 
-    public function __construct(Query $query) {
+    public function __construct(Query $query, Notification $notification) {
         $this->query = $query;
+        $this->notification = $notification;
     }
 
     public function index(Request $request) {
@@ -32,13 +35,16 @@ class AgendaController extends Controller
     }
 
     public function confirm(int $id) {
-        $this->query->confirm($id);
+        $name = $this->query->confirm($id);
+        $this->notification->store("A consulta do $name foi confirmada.");
 
         return redirect()->route('app.agenda');
     }
 
     public function cancel(int $id) {
-        $this->query->cancel($id);
+        $name = $this->query->cancel($id);
+        $this->notification->store("A consulta  do $name foi cancelada.");
+
         return redirect()->route('app.agenda');
     }
 }

@@ -17,6 +17,6 @@ class Notification extends Model
     }
 
     public function getNotifications() {
-        return $this->select()->limit(3)->get();
+        return $this->select()->orderBy('id', 'DESC')->limit(3)->get();
     }
 }

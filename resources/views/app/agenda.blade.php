@@ -25,11 +25,21 @@
             <aside class="querys container">
                 <h3 class="title">Consutas do dia</h3>
     
+                @if (count($querys) > 0)
                 @component('app.layout.components.query', [
                     'query' => $querys,
                     'hidden' => false,
                 ])
                 @endcomponent
+
+                @else
+                <div class="message-empty">
+                    <p class="message-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </p>
+                    <p class="message-text">Sem consultas para hoje!</p>
+                </div>
+                @endif
             </aside>
         </div>
     </div>

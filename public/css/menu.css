@@ -19,6 +19,7 @@
     left: -100%;
     bottom: 0;
 
+    padding-top: 40px;
     transition: 400ms;
 
     z-index: 10;
@@ -76,6 +77,10 @@
     text-align: center;
 }
 
+.activate {
+    color: var(--primary-color);
+}
+
 @media (min-width: 1024px) {
     .button-menu,
     .button-close,
@@ -86,6 +91,7 @@
     .menu {
         position: relative;
         left: 0;
+        padding-top: 0;
 
         transition: 0;
         border-radius: 10px;

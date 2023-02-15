@@ -17,6 +17,11 @@ class Doctor extends Model
 
     protected $fillable = ['name', 'lastName', 'phoneNumber', 'cpf', 'genre', 'city', 'uf', 'area'];
 
+    public function countAllDoctors()
+    {
+        return $this->count();
+    }
+
     public function getGenre()
     {
         return $this->hasOne(Genre::class, 'id', 'genre');
