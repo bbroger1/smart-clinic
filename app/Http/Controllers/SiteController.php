@@ -53,5 +53,7 @@ class SiteController extends Controller
 
         $this->query->store($validatedDate);
         $this->notification->store("O cliente " . $validatedDate['name'] . " quer agendar uma consulta(" . $validatedDate["date"] . ").");
+    
+        return view('site.finish');
     }
 }

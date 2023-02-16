@@ -21,6 +21,8 @@ class DashboardController extends Controller
     }
 
     public function index(Request $request) {
+        date_default_timezone_set('America/Sao_Paulo');
+
         $day = $request->input('day');
         $month = $request->input('month') + 1;
         $year = $request->input('year');
