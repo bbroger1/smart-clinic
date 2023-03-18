@@ -1,9 +1,9 @@
-# Smart-clinic
+# Smart Clinic
 <p>
 Smath clinic é um projeto para uma clinica gerenciar seus clientes e medicos. O app é dividido em duas seções:
 Cliente e Admim. <br/>
-O Admim tem acesso ao dashboard, onde ele pode, cadastrar registros de novos medicos, remover registros e atualizar registros. <br />
-Além disso ele pode confirma ou cancelar as solicitações de consultas dos seus clientes. <br />
+O Admim tem acesso ao dashboard, onde ele pode, cadastrar medicos, desativar cadastros, atualizar cadastros e deletar registros.
+Além disso o Admim pode cancelar e confirmar as solicitações de consultas feitas pelos clientes. 
 
 O Cliente tem acesso a um formulario, onde ele preenche com seus dados para solicitar uma consulta.
 </p>
