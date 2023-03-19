@@ -23,6 +23,7 @@
                 @component('layout.partials.large-calendar', [
                     'route' => 'app.agenda',
                     'amountDate' => $amountDate,
+                    'params' => []
                 ])
                 @endcomponent
             </main>

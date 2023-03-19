@@ -31,18 +31,33 @@ class SiteController extends Controller
 
     public function step01()
     {
-        return view('site.index', [
+        return view('site.formstep01', [
             'areaOptions' => $this->area->getAllAreas(),
         ]);
     }
 
-    public function step02(GetAreasDoctors $request) 
+    public function step02(Request $request, GetAreasDoctors $getAreasDoctors) 
     {
-        $request->validated();
+        date_default_timezone_set('America/Sao_Paulo');
 
-        return view('site.index', [
-            'doctors' => $this->doctor->getDoctorsWithArea($request->get('area')),
+        $day   = $request->get('day');
+        $month = $request->get('month');
+        $year  = $request->get('year');
+
+        $date = null;
+
+        if ($day && $month && $year)
+            $date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+
+        else
+            $date = date('Y-m-d');
+
+        $getAreasDoctors->validated();
+
+        return view('site.formstep02', [
+            'doctors' => $this->doctor->getDoctorsWithArea($getAreasDoctors->get('area')),
             'genres'  => $this->genre->getAllGenres(),
+            'amountDate' => $date,
         ]);
     }
 

@@ -20,11 +20,14 @@ $day = 1 - $dayWeekNumber;
 
         <div class="row">
             <a 
-                href="{{ route($route, [ 
-                    'year' => $yearMonthDay[1] - 1 == 0 ? $yearMonthDay[0] - 1 : $yearMonthDay[0], 
-                    'month' => $yearMonthDay[1] - 1 == 0 ? 12 : $yearMonthDay[1] - 1, 
-                    'day' => $yearMonthDay[2] 
-                ]) }}"
+                href="{{ route($route, array_merge(
+                    [ 
+                        'year' => $yearMonthDay[1] - 1 == 0 ? $yearMonthDay[0] - 1 : $yearMonthDay[0], 
+                        'month' => $yearMonthDay[1] - 1 == 0 ? 12 : $yearMonthDay[1] - 1, 
+                        'day' => $yearMonthDay[2],
+                    ],
+                    $params
+                )) }}"
                 aria-label="Botão para mudar para proximo mes" 
                 class="header-button" 
                 id="left">
@@ -32,11 +35,14 @@ $day = 1 - $dayWeekNumber;
             </a>
 
             <a 
-                href="{{ route($route, [ 
-                    'year' => $yearMonthDay[1] + 1 == 13 ? $yearMonthDay[0] + 1 : $yearMonthDay[0], 
-                    'month' => $yearMonthDay[1] + 1 == 13 ? 1 : $yearMonthDay[1] + 1, 
-                    'day' => $yearMonthDay[2] 
-                ]) }}"
+                href="{{ route($route, array_merge(
+                    [ 
+                        'year' => $yearMonthDay[1] + 1 == 13 ? $yearMonthDay[0] + 1 : $yearMonthDay[0], 
+                        'month' => $yearMonthDay[1] + 1 == 13 ? 1 : $yearMonthDay[1] + 1, 
+                        'day' => $yearMonthDay[2],
+                    ],
+                    $params
+                )) }}"
                 aria-label="Botão para mudar para proximo mes" 
                 class="header-button" 
                 id="right">
