@@ -16,7 +16,16 @@
     align-items: center;
 }
 
+.row {
+    display: flex;
+    gap: 10px;
+}
+
 .header-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 30px;
     height: 30px;
 
@@ -24,10 +33,10 @@
     border-radius: 10px;
 
     border: none;
-
     box-shadow: 0 0 20px var(--primary-color-shadow);
 
     cursor: pointer;
+    text-decoration: none;
 
     color: var(--second-color);
     background: var(--primary-color);

@@ -20,19 +20,53 @@ class AgendaController extends Controller
         date_default_timezone_set('America/Sao_Paulo');
         
         $day   = $request->input('day');
-        $month = $request->input('month') + 1;
+        $month = $request->input('month');
         $year  = $request->input('year');
 
         $date = null;
 
-        if ($day and $month and $year)
+        if ($day && $month && $year)
             $date = date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
 
         else
             $date = date('Y-m-d');
+        
+        $monthNames = [
+            '01' => 'Janeiro',
+            '02' => 'Fevereiro',
+            '03' => 'Março',
+            '04' => 'Abril',
+            '05' => 'Maio',
+            '06' => 'Junho',
+            '07' => 'Julho',
+            '08' => 'Agosto',
+            '09' => 'Setembro',
+            '10' => 'Outubro',
+            '11' => 'Novembro',
+            '12' => 'Dezembro'
+        ];
+
+        $temp = explode('-', $date);
+        $time = mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]);
+
+        $dayWeekNumber = date('N', mktime(0, 0, 0, $temp[1], 1, $temp[0]));
+        $daysCount = date('t', $time);
+        
+        $firstDayDate = date('Y-m-d', mktime(0, 0, 0, $temp[1], 1, $temp[0]));
+        $lastDayDate = date('Y-m-d', mktime(0, 0, 0, $temp[1], $daysCount + 1, $temp[0]));
+        $day = 1 - $dayWeekNumber;
+
 
         return view('app.agenda', [
-            'querys' => $this->query->getQueryOfDate($date)
+            'querys' => $this->query->getQueryOfDate($date),
+            'amountDate' => $date,
+            'day' => $day,
+            'firstDay' => $firstDayDate,
+            'lastDay' => $lastDayDate,
+            'days' => $temp[2],
+            'month' => $temp[1],
+            'year' => $temp[0],
+            'monthName' => $monthNames[$temp[1]]
         ]);
     }
 
