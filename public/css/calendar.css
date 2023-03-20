@@ -81,3 +81,7 @@
     color: var(--second-color);
     background: var(--primary-color);
 }
+
+.disabled {
+    background: var(--red-color);
+}

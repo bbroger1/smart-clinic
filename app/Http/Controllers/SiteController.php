@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\Genre;
 use App\Models\Query;
 use App\Models\Notification;
+use App\Models\BlockedDay;
 
 use App\Http\Requests\GetAreasDoctors;
 use App\Http\Requests\StoreQuery;
@@ -36,7 +37,7 @@ class SiteController extends Controller
         ]);
     }
 
-    public function step02(Request $request, GetAreasDoctors $getAreasDoctors) 
+    public function step02(Request $request, GetAreasDoctors $getAreasDoctors, BlockedDay $blockedDay) 
     {
         date_default_timezone_set('America/Sao_Paulo');
 
@@ -57,6 +58,7 @@ class SiteController extends Controller
         return view('site.formstep02', [
             'doctors' => $this->doctor->getDoctorsWithArea($getAreasDoctors->get('area')),
             'genres'  => $this->genre->getAllGenres(),
+            'blockedDays' => $blockedDay->get($date),
             'amountDate' => $date,
         ]);
     }

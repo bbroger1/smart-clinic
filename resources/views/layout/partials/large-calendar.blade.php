@@ -82,10 +82,8 @@ $day = 1 - $dayWeekNumber;
                                         ],
                                         $params
                                     )) }}"
-                                    class="calendar-day 
-                                        {{ ($date < $firstDayDate or $date >= $lastDayDate) ? 'gray' : '' }}
-                                        {{ $date == $amountDate ? 'activate-day' : '' }}">
-                                            {{ date('d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])) }}
+                                    class="calendar-day {{ in_array(["date" => $date], $blockedDays) ? 'disabled' : '' }} {{ ($date < $firstDayDate or $date >= $lastDayDate) ? 'gray' : '' }} {{ $date == $amountDate ? 'activate-day' : '' }}">
+                                        {{ date('d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])) }}
                                 </a>
                                 
                             @php($day++)

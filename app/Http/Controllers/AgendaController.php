@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Query;
 use App\Models\Notification;
+use App\Models\BlockedDay;
 
 class AgendaController extends Controller
 {
@@ -16,7 +17,7 @@ class AgendaController extends Controller
         $this->notification = $notification;
     }
 
-    public function index(Request $request) {
+    public function index(Request $request, BlockedDay $blockedDay) {
         date_default_timezone_set('America/Sao_Paulo');
 
         $day   = $request->input('day');
@@ -30,9 +31,10 @@ class AgendaController extends Controller
 
         else
             $date = date('Y-m-d');
-
+        
         return view('app.agenda', [
             'querys' => $this->query->getQueryOfDate($date),
+            'blockedDays' => $blockedDay->get($date),
             'amountDate' => $date,
         ]);
     }
@@ -48,6 +50,15 @@ class AgendaController extends Controller
         $name = $this->query->cancel($id);
         $this->notification->store("A consulta  do $name foi cancelada.");
 
+        return redirect()->route('app.agenda');
+    }
+
+    public function lockDay(Request $request, BlockedDay $blockedDay) {
+        $validated = $request->validate([
+            'date' => 'required'
+        ]);
+
+        $blockedDay->store($validated["date"]);
         return redirect()->route('app.agenda');
     }
 }

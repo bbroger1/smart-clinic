@@ -23,12 +23,23 @@
                 @component('layout.partials.large-calendar', [
                     'route' => 'app.agenda',
                     'amountDate' => $amountDate,
+                    'blockedDays' => $blockedDays,
                     'params' => []
                 ])
-                    <a href="#" class="lock-button green">
-                        <i class="fa-solid fa-lock"></i>
-                        Bloquear dia
-                    </a>
+
+                    <form method="POST" action="{{ route('app.lock-day') }}">
+                        @csrf
+                        
+                        <input type="hidden" name="date" value="{{ $amountDate }}" />
+
+                        <button 
+                            type="submit"
+                            aria-label="Botão para bloquear dia" 
+                            class="lock-button green">
+                                <i class="fa-solid fa-lock"></i>
+                                Bloquear dia
+                        </button>
+                    </form>
                 @endcomponent
             </main>
     

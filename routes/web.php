@@ -32,6 +32,8 @@ Route::middleware([AuthMiddleware::class])->prefix('app')->group(function () {
         Route::get('/', [AgendaController::class, 'index'])->name('app.agenda');
         Route::get('/confirm/{id}', [AgendaController::class, 'confirm'])->name('app.confirm');
         Route::get('/canceled/{id}', [AgendaController::class, 'cancel'])->name('app.cancel');
+
+        Route::post('/lock-day', [AgendaController::class, 'lockDay'])->name('app.lock-day');
     });
 
     Route::prefix('/doctors')->group(function () {

@@ -23,12 +23,15 @@
             @component('layout.partials.large-calendar', [
                 'route' => 'site.step2',
                 'amountDate' => $amountDate,
+                'blockedDays' => $blockedDays,
                 'params' => [
                     '_token' => app('request')->input('_token'),
                     'area' => app('request')->input('area'),
                 ]
             ])
             @endcomponent
+
+            @if ( !in_array(['date' => $amountDate], $blockedDays) )
 
             <div class="form-container">
                 <h2 class="title">Dados</h2> 
@@ -141,6 +144,19 @@
 
                 </div>
             </div>
+
+            @else
+            
+            <div class="blocked-message">
+                <p class="blocked-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </p>
+                <p class="first-line-message">Este dia está bloqueado!</p>
+                <p>Por favor, selecione outro dia!</p>
+            </div>
+
+            @endif
+
         </main>
 
         @endif
