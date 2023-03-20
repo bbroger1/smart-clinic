@@ -54,6 +54,13 @@
 }
 
 .calendar-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: var(--text-color);
+
     width: 30px;
     height: 30px;
 

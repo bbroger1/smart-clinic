@@ -73,12 +73,20 @@ $day = 1 - $dayWeekNumber;
                             <td>
                                 @php( $date = date('Y-m-d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])) )
 
-                                <button 
+                                <a 
+                                    href="{{ route($route, array_merge(
+                                        [ 
+                                            'year' => $yearMonthDay[0], 
+                                            'month' => $yearMonthDay[1], 
+                                            'day' => date('d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])),
+                                        ],
+                                        $params
+                                    )) }}"
                                     class="calendar-day 
                                         {{ ($date < $firstDayDate or $date >= $lastDayDate) ? 'gray' : '' }}
                                         {{ $date == $amountDate ? 'activate-day' : '' }}">
-                                        {{ date('d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])) }}
-                                </button>
+                                            {{ date('d', mktime(0, 0, 0, $yearMonthDay[1], $day, $yearMonthDay[0])) }}
+                                </a>
                                 
                             @php($day++)
                             </td>
@@ -88,5 +96,11 @@ $day = 1 - $dayWeekNumber;
 
             </tbody>
         </table>
+
+        <div>
+            @isset( $slot )
+            {{ $slot }}
+            @endisset
+        </div>
     </div>
 </div>

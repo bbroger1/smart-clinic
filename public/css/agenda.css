@@ -2,6 +2,30 @@
     min-height: 95vh;
 }
 
+.lock-button {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.6rem;
+
+    width: 100%;
+    height: 40px;
+}
+
+.lock-button:hover {
+    transform: scale(0.98);
+}
+
+.red {
+    color: var(--red-color);
+    background: var(--red-bg-color);
+}
+
+.green {
+    color: var(--green-color);
+    background: var(--green-bg-color);
+}
+
 .main {
     padding: 10px;
     width: 100%;

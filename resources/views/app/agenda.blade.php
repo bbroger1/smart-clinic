@@ -25,6 +25,10 @@
                     'amountDate' => $amountDate,
                     'params' => []
                 ])
+                    <a href="#" class="lock-button green">
+                        <i class="fa-solid fa-lock"></i>
+                        Bloquear dia
+                    </a>
                 @endcomponent
             </main>
     
