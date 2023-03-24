@@ -27,7 +27,9 @@ class Query extends Model
         return $this->hasOne(QueryStatus::class, 'id', 'status');
     }
 
-    public function store(array $data) {
+    public function store(array $data)
+    {
+        
         $this->create($data);
     }
 

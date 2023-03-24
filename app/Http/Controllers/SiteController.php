@@ -64,9 +64,12 @@ class SiteController extends Controller
     }
 
 
-    public function create(StoreQuery $request)
+    public function create(StoreQuery $request, BlockedDay $blockedDay)
     {
         $validatedDate = $request->validated();
+
+        if ($blockedDay->isBlockedDay($validatedDate['date']))
+            return redirect()->back()->withInput();
 
         $this->query->store($validatedDate);
         $this->notification->store("O cliente " . $validatedDate['name'] . " quer agendar uma consulta(" . $validatedDate["date"] . ").");

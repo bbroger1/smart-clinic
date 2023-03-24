@@ -19,6 +19,12 @@ class BlockedDay extends Model
         ]);
     }
 
+
+    public function isBlockedDay(string $date)
+    {
+        return $this->where('date', $date)->first();
+    }
+
     public function get(string $date) 
     {
         $splitDate = explode('-', $date);
