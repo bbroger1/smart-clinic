@@ -61,4 +61,11 @@ class AgendaController extends Controller
         $blockedDay->store($validated["date"]);
         return redirect()->route('app.agenda');
     }
+
+
+    public function unlockDay(Request $request, BlockedDay $blockedDay)
+    {
+        $blockedDay->freeDay($request->input('date'));
+        return redirect()->back();
+    }
 }

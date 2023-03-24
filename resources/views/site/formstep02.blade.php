@@ -31,7 +31,7 @@
             ])
             @endcomponent
 
-            {{-- @if ( !in_array(['date' => $amountDate], $blockedDays) ) --}}
+            @if ( !in_array(['date' => $amountDate], $blockedDays) )
 
             <div class="form-container">
                 <h2 class="title">Dados</h2> 
@@ -145,7 +145,7 @@
                 </div>
             </div>
 
-            {{-- @else
+            @else
             
             <div class="blocked-message">
                 <p class="blocked-icon">
@@ -155,7 +155,7 @@
                 <p>Por favor, selecione outro dia!</p>
             </div> 
 
-            @endif --}}
+            @endif
 
         </main>
 

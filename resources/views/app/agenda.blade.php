@@ -1,5 +1,10 @@
-@extends('app.layout.base')
+@php
 
+$amountDayIsBlocked = in_array(["date" => $amountDate], $blockedDays);
+
+@endphp
+
+@extends('app.layout.base')
 @section('title', 'Agenda')
 
 @section('styles')
@@ -27,7 +32,13 @@
                     'params' => []
                 ])
 
+                @if ( $amountDayIsBlocked )
+                    <form method="POST" action="{{ route('app.unlock-day') }}">
+                    @method('DELETE')
+                @else
                     <form method="POST" action="{{ route('app.lock-day') }}">
+                    @method('POST')
+                @endif
                         @csrf
                         
                         <input type="hidden" name="date" value="{{ $amountDate }}" />
@@ -35,9 +46,10 @@
                         <button 
                             type="submit"
                             aria-label="Botão para bloquear dia" 
-                            class="lock-button green">
+                            class="lock-button {{ $amountDayIsBlocked ? 'red' : 'green' }}">
                                 <i class="fa-solid fa-lock"></i>
-                                Bloquear dia
+
+                                {{ $amountDayIsBlocked ? 'Desbloquear dia' : 'Bloquear dia' }}
                         </button>
                     </form>
                 @endcomponent

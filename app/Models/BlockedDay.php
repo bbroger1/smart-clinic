@@ -25,6 +25,11 @@ class BlockedDay extends Model
         return $this->where('date', $date)->first();
     }
 
+    public function freeDay(string $date)
+    {
+        return $this->where('date', $date)->delete();
+    }
+
     public function get(string $date) 
     {
         $splitDate = explode('-', $date);
